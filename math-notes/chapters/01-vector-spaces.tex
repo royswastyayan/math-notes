@@ -1,0 +1,196 @@
+\section{Vector Spaces}
+
+\subsection{$\R^n$ and $\C^n$}
+
+Before defining vector spaces, Axler establishes the fields we are working over. The symbol $\F$ will always denote either the real numbers $\R$ or the complex numbers $\C$.
+\begin{definition}[Fields]
+	A field is a set containing at least two distinct elements called 0 and 1, along with
+	operations of addition and multiplication satisfying the properties of commutativity, associativity, identities, additive inverse, multiplicative inverse and distributivity.
+\end{definition}
+\subsubsection{Complex Numbers, $\C$}
+
+\begin{definition}[Complex Numbers]
+\leavevmode
+\begin{itemize}
+	\item A complex number is an ordered pair $(a,b)$ where $a,b \in \R$, but we will write this as $a + bi$.
+	\item The set of all complex numbers is denoted by $\C$:
+	\[ \C = \{a + bi \colon a, b \in \R\}. \]
+	\item Addition and multiplication on $\C$ are defined by
+	\[ (a + bi) + (c + di) = (a + c) + (b + d)i, \]
+	\[ (a + bi)(c + di) = (ac - bd) + (ad + bc)i; \]
+	here a, b, c, d $\in$ $\R$
+\end{itemize}
+\end{definition}
+\begin{tcolorbox}[colback=yellow!20, colframe=yellow!80!black, title=My thoughts]
+Just assume $i^2 = -1$ and everything works the same as in $\R$. Commutativity, associativity, identities, additive inverse, multiplicative inverse and distributivity are all properties of complex arithmetic.
+\end{tcolorbox}
+\subsubsection{Lists}
+\begin{definition}[List, length]
+\leavevmode
+\begin{itemize}
+	\item Suppose $n$ is a nonnegative integer. A list of length $n$ is an ordered collection of $n$ elements (which might be numbers, other lists, or more abstract
+	objects).
+	\item Two lists are equal if and only if they have the same length and the same
+	elements in the same order.
+\end{itemize}
+\end{definition}
+\begin{tcolorbox}[colback=yellow!20, colframe=yellow!80!black, title=My thoughts]
+A list can have multiple same entries unlike sets. Fields and Vector Spaces (defined later) are sets, but a list is a tuple.
+\end{tcolorbox}
+\subsubsection{$\F^n$}
+\begin{definition}[$\F^n$, coordinate]
+	$\F^n$ is the set of all lists of length $n$ of elements of $\F$:
+	\[
+	\F^n = \{(x_1, \dots, x_n) : x_k \in \F \text{ for } k \in \{1, \dots, n\}\}
+	\]
+	For $(x_1, \dots, x_n) \in \F^n$ and $k \in \{1, \dots, n\}$, we say that $x_k$ is the $k^{th}$ coordinate of $(x_1, \dots, x_n)$.
+\end{definition}
+\begin{definition}[addition in $F^n$]
+	Addition in $F^n$ is defined by adding corresponding coordinates:
+	\[(x_1, … , x_n) + (y_1, … , y_n) = (x_1 + y_1, … , x_n + y_n)\]
+\end{definition}
+\begin{definition}[additive inverse in $\F^n$, $-x$]
+	For $x \in \F^n$, the additive inverse of $x$, denoted by $-x$, is the vector $-x$ $/in$ $\F^n$
+	such that
+	\[x + (-x) = 0\]
+	Thus if $x = (x_1, \dots, x_n)$, then $-x = (-x_1, \dots, -x_n)$.
+\end{definition}
+\begin{definition}[scalar multiplication in $\F^n$]
+	The product of a number $\lambda$ and a vector in $\F^n$ is computed by multiplying
+	each coordinate of the vector by $\lambda$:
+	\[\lambda(x_1, \dots, x_n) = (\lambda x_1, \dots , \lambda x_n);\]
+	here $\lambda$ $\in$ $\F$ and $(x_1, \dots , x_n) \in \F^n$
+\end{definition}
+\subsection{Definition of a Vector Space}
+
+Now we abstract the properties of $\R^n$ and $\C^n$ into a general structure.
+
+\begin{definition}[Vector Space]
+	A vector space is a set $\V$ along with an addition on $\V$ and a scalar multiplication on $\V$ such that commutativity, associativity, identities, additive inverse, and distributivity hold.
+\end{definition}
+\begin{tcolorbox}[colback=yellow!20, colframe=yellow!80!black, title=My thoughts]
+	Essentially, the difference between a field and a vector space is the fact that only scalar multiplication is defined for elements of a vector space. This also implies it is not necessary for a vector space to have multiplicative inverses. Also note, a field is a standalone set while a vector space relies on an underlying field to exist at all.
+\end{tcolorbox}
+\begin{definition}[Real Vector Space, Complex Vector Space]
+\leavevmode
+\begin{itemize}
+	\item A vector space over $\R$ is called a real vector space.
+	\item A vector space over $\C$ is called a complex vector space.
+\end{itemize}
+\end{definition}
+\subsubsection{Some Property Proofs}
+\begin{theorem}[Unique Additive Identity]
+	A vector space has a unique additive identity.
+\end{theorem}
+
+\begin{proof}
+	Suppose $0$ and $0'$ are both additive identities for $V$. Then
+	\[ 0' = 0' + 0 = 0 + 0' = 0, \]
+	where the first equality holds because 0 is an additive identity, the second equality
+	comes from commutativity, and the third equality holds because $0'$ is an additive
+	identity. Thus $0' = 0$, proving that $\V$ has only one additive identity.
+\end{proof}
+\begin{theorem}
+	a number times the vector 0 is 0
+\end{theorem}
+\begin{proof}
+	For $v \in \V$, we have
+	$0v = (0 + 0)v = 0v + 0v$.
+	Adding the additive inverse of $0v$ to both
+	sides of the equation above gives $0 = 0v$,
+	as desired.
+\end{proof}
+\begin{theorem}
+	the number -1 times a vector gives the additive inverse of the vector
+\end{theorem}
+\begin{proof}
+	For $v \in \V$, we have
+	$v + (-1)v = 1v + (-1)v = (1 + (-1))v = 0v = 0$.
+	This equation says that $(-1)v$, when added to $v$, gives 0. Thus $(-1)v$ is the
+	additive inverse of $v$, as desired
+\end{proof}
+\subsection{Subspaces}
+\begin{definition}[Subspace]
+	A subset $U$ of $\V$ is called a subspace of $\V$ if $U$ is also a vector space under the same addition and scalar multiplication.
+\end{definition}
+\subsubsection{Sums of Subspaces}
+\begin{definition}[Sum of Subspaces]
+	Suppose $\V_1, \dots , \V_m$ are subspaces of $\V$. The sum of $\V_1, \dots , \V_m$, denoted by $\V_1 + \dots + \V_m$, is the set of all possible sums of elements of $\V_1,\dots , \V_m$. More
+	precisely,
+	\[\V_1 + \dots + \V_m = \{v_1 + \dots + v_m \colon v_1 \in \V_1, \dots , v_m \in \V_m\}\]
+\end{definition}
+\begin{theorem}
+	Suppose $\V_1, \dots , \V_m$ are subspaces of $\V$. Then $\V_1 + \dots + \V_m$ is the smallest
+	subspace of $\V$ containing $\V_1, \dots , \V_m$.
+\end{theorem}
+\begin{tcolorbox}[colback=yellow!20, colframe=yellow!80!black, title=My thoughts]
+	I will add my own proof that sum of subspaces is a subspace (although Axler skips this) because I think it is necessary.
+\end{tcolorbox}
+\begin{proof}
+	Let us first prove that sum of subspaces is a subspace
+\leavevmode
+\begin{itemize}
+	\item $\V_1 + \dots + \V_m$ contains 0 (additive identity) since all the subspaces contain 0 and sum of subspaces contain every possible sum of their elements.
+	\item Let $x, y \in (\V_1 + \dots + \V_m).$ \\
+	By definition we can express them as $x = v_1 + \dots + v_m$ and $y = u_1 + \dots + u_m$ such that $u_1, v_1 \in \V_1, \dots, u_m, v_m \in \V_m$
+	So we have \[x + y = (v_1 + \dots + v_m) + (u_1 + \dots + u_m)\]
+	By commutativity and associativity of vector addition, \[x + y = (v_1 + u_1) + \dots + (v_m + u_m)\]
+	Since $\V_1, \dots, \V_m$ are subspaces, $(v_1 + u_1) \in \V_1, \dots, (v_m + u_m) \in \V_m$
+	
+	Hence we conclude $(x + y) \in \V_1 + \dots + \V_m$
+	
+	Thus, it is closed under addition
+	\item Let $x \in (\V_1 + \dots + \V_m).$ and $x = v_1 + \dots + v_m$ where $v_1 \in \V_1, \dots, v_m \in \V_m.$ Let $c$ be any scalar from the field $\F.$\\
+	Multiplying $x$ with the scalar $c$ yields:\[cx = c(v_1 + \dots + v_m) = cv_1 + \dots + cv_m\]
+	Since $\V_1 + \dots + \V_m$ are subspaces $cv_1 \in \V_1, \dots , cv_m \in \V_m.$\\
+	We conclude $cx \in \V_1 + \dots + \V_m$
+\end{itemize}
+Thus, sum of subspaces is a subspace.
+
+Now we can start with the proof for $\V_1, \dots , \V_m$ being the smallest subspace of $\V$ containing $\V_1, \dots , \V_m$.
+
+The subspaces $\V_1, \dots , \V_m$ are all contained in $\V_1 + \dots + \V_m,$ considering sums $v_1 + \dots + v_m$ where all except one of the $v_k$’s are 0. 
+
+Conversely, every subspace of $\V$ containing $\V_1, \dots , \V_m$ contains $\V_1 + \dots + \V_m$ (because subspaces
+must contain all finite sums of their elements). Thus $\V_1 + \dots + \V_m$ is the smallest
+subspace of $V$ containing $\V_1, \dots , \V_m.$
+\end{proof}
+\subsubsection{Direct Sums}
+\begin{definition}[Direct Sum]
+	Suppose $\V_1, \dots , \V_m$ are subspaces of $\V$.
+\begin{itemize}
+	\item The sum $\V_1 + \dots + \V_m$ is called a direct sum if each element of $\V_1 + \dots + \V_m$
+	can be written in only one way as a sum $\V_1 + \dots + \V_m$, where each $v_k \in \V_k$.
+	\item If $\V_1 + \dots + \V_m$ is a direct sum, then $\V_1 \oplus \dots \oplus \V_m$ denotes $\V_1 + \dots + \V_m$,
+	with the $\oplus$ notation serving as an indication that this is a direct sum.
+\end{itemize}	
+\begin{theorem}
+	Suppose $\V_1 + \dots + \V_m$ are subspaces of $\V$. Then $\V_1 + \dots + \V_m$ is a direct sum if
+	and only if the only way to write 0 as a sum $v_1 + \dots + v_m$, where each $v_k \in \V_k$,
+	is by taking each $v_k$ equal to 0.
+\end{theorem}
+\begin{proof}
+	First suppose $\V_1 + \dots + \V_m$ is a direct sum. Then the definition of direct
+	sum implies that the only way to write 0 as a sum $v_1 + \dots + v_m$, where each $v_k \in \V_k$,
+	is by taking each $v_k$ equal to 0.
+	
+	Now suppose that the only way to write 0 as a sum $v_1 + \dots + v_m$, where each
+	$v_k \in \V_k$, is by taking each $v_k$ equal to 0. To show that $\V_1 + \dots + \V_m$ is a direct
+	sum, let $v \in \V_1 + \dots + \V_m$. We can write
+	\[v = v_1 + \dots + v_m\]
+	for some $v_1 \in \V_1, \dots, v_m \in \V_m$. To show that this representation is unique,
+	suppose we also have
+	\[v = u_1 + \dots + u_m\]
+	where $u_1 \in \V_1, \dots , u_m \in \V_m$. Subtracting these two equations, we have
+	\[0 = (v_1 - u_1) + \dots + (v_m - u_m)\]
+	Because $v_1 - u_1 \in \V_1, \dots , v_m - u_m \in \V_m$, the equation above implies that each
+	$v_k - u_k$ equals 0. Thus $v_1 = u_1, \dots , v_m = u_m$, as desired.
+\end{proof}
+\begin{theorem}
+	Suppose $U$ and $W$ are subspaces of $V$. Then
+	$$U + W \text{ is a direct sum } \iff U \cap W = \{0\}.$$
+\end{theorem}
+\begin{proof}
+	
+\end{proof}
+\end{definition}

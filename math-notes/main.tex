@@ -1,0 +1,36 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{tcolorbox}
+\geometry{margin=1in}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+
+
+\newcommand{\F}{\mathbb{F}} 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\nul}{\text{null }}
+\newcommand{\range}{\text{range }}
+
+\title{Linear Algebra Done Right \\ \large Reading Notes}
+\author{Swastyayan Roy}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	\tableofcontents
+	\newpage
+	
+	
+	\include{chapters/01-vector-spaces}
+	
+	
+\end{document}
