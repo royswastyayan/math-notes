@@ -50,7 +50,7 @@ A list can have multiple same entries unlike sets. Fields and Vector Spaces (def
 	\[(x_1, … , x_n) + (y_1, … , y_n) = (x_1 + y_1, … , x_n + y_n)\]
 \end{definition}
 \begin{definition}[additive inverse in $\F^n$, $-x$]
-	For $x \in \F^n$, the additive inverse of $x$, denoted by $-x$, is the vector $-x$ $/in$ $\F^n$
+	For $x \in \F^n$, the additive inverse of $x$, denoted by $-x$, is the vector $-x$ $\in$ $\F^n$
 	such that
 	\[x + (-x) = 0\]
 	Thus if $x = (x_1, \dots, x_n)$, then $-x = (-x_1, \dots, -x_n)$.
@@ -160,7 +160,7 @@ subspace of $V$ containing $\V_1, \dots , \V_m.$
 	Suppose $\V_1, \dots , \V_m$ are subspaces of $\V$.
 \begin{itemize}
 	\item The sum $\V_1 + \dots + \V_m$ is called a direct sum if each element of $\V_1 + \dots + \V_m$
-	can be written in only one way as a sum $\V_1 + \dots + \V_m$, where each $v_k \in \V_k$.
+	can be written in only one way as a sum $v_1 + \dots + v_m$, where each $v_k \in \V_k$.
 	\item If $\V_1 + \dots + \V_m$ is a direct sum, then $\V_1 \oplus \dots \oplus \V_m$ denotes $\V_1 + \dots + \V_m$,
 	with the $\oplus$ notation serving as an indication that this is a direct sum.
 \end{itemize}	
@@ -173,6 +173,10 @@ subspace of $V$ containing $\V_1, \dots , \V_m.$
 	First suppose $\V_1 + \dots + \V_m$ is a direct sum. Then the definition of direct
 	sum implies that the only way to write 0 as a sum $v_1 + \dots + v_m$, where each $v_k \in \V_k$,
 	is by taking each $v_k$ equal to 0.
+	
+	\begin{tcolorbox}[colback=yellow!20, colframe=yellow!80!black, title=My thoughts]
+		This is because taking every $v_k = 0$ is a trivial solution, but since we know it is a direct sum, the only solution would be taking every $v_k = 0$.
+	\end{tcolorbox}
 	
 	Now suppose that the only way to write 0 as a sum $v_1 + \dots + v_m$, where each
 	$v_k \in \V_k$, is by taking each $v_k$ equal to 0. To show that $\V_1 + \dots + \V_m$ is a direct
@@ -191,6 +195,241 @@ subspace of $V$ containing $\V_1, \dots , \V_m.$
 	$$U + W \text{ is a direct sum } \iff U \cap W = \{0\}.$$
 \end{theorem}
 \begin{proof}
-	
+	First suppose that $U + W$ is a direct sum. If $v \in U \cap W$, then $0 = v +(-v)$,
+	where $v \in U$ and $-v \in W$. By the unique representation of 0 as the sum of a
+	vector in $U$ and a vector in $W$, we have $v = 0$. Thus $U \cap W = \{0\}$, completing
+	the proof in one direction.
+	To prove the other direction, now suppose $U \cap W = \{0\}$. To prove that $U + W$
+	is a direct sum, suppose $u \in U, w \in W$, and
+	$0 = u + w$.
+	To complete the proof, we only need to show that $u = w = 0$. The
+	equation above implies that $u = -w \in W$. Thus $u \in U \cap W$. Hence $u = 0$,
+	which by the equation above implies that $w = 0$, completing the proof.
 \end{proof}
 \end{definition}
+\subsection{Exercise 1A}
+\begin{tcolorbox}[colback=yellow!20, colframe=yellow!80!black, title=My thoughts]
+	I can't find a way to prove these identities by themselves, maybe I need to learn analysis for that. I will just be assuming $\R$ is already known to be a field, and use those properties to prove these.
+\end{tcolorbox}
+\begin{question}
+	Show that $\alpha + \beta = \beta + \alpha$ for all $\alpha, \beta \in \C$.  
+\end{question}
+\begin{proof}
+	Letting $\alpha = a+bi$, $\beta = c+di$, $\alpha + \beta = a + ib + c + id$
+	\[= (a + c) + (b + d)i\]
+	\[= (c + a) + (d + b)i\]
+	\[= (c + id) + (a + ib)\]
+	\[= \beta + \alpha\]
+\end{proof}
+\begin{question}
+	Show that $(\alpha + \beta) + \lambda = \alpha + (\beta + \lambda)$ for all $\alpha, \beta, \lambda \in \C$.     
+\end{question}
+\begin{proof}
+	Letting $\alpha = a+bi$, $\beta = c+di$, and $\lambda = e+fi$ (where $a, b, c, d, e, f \in \R$), the left side of the equation expands as:\\$(\alpha + \beta) + \lambda$\\$= ((a+c) + (b+d)i) + (e+fi)$\\$= ((a+c)+e) + ((b+d)+f)i$\\Because addition is associative in the real numbers, we can rewrite the real and imaginary components as $(a+(c+e))$ and $(b+(d+f))$.\\Expanding the right side gives:\\$\alpha + (\beta + \lambda)$\\$= (a+bi) + ((c+e) + (d+f)i)$\\$= (a+(c+e)) + (b+(d+f))i$
+\end{proof}
+\begin{question}
+	Show that $(\alpha\beta)\lambda = \alpha(\beta\lambda)$ for all $\alpha, \beta, \lambda \in \C$.
+\end{question}
+\begin{proof}
+	Letting $\alpha = a+bi$, $\beta = c+di$, and $\lambda = e+fi$ (where $a, b, c, d, e, f \in \R$), the left side of the equation expands as:\[((ac-bd) + (ad+bc)i)(e+fi)\] Multiplying this out yields a real part of $ace - bde - adf - bcf$ and an imaginary part of $acf - bdf + ade + bce$.\\Expanding the right side $\alpha(\beta\lambda)$ gives \[(a+bi)((ce-df) + (cf+de)i)\] Multiplying this out yields a real part of $ace - adf - bcf - bde$ and an imaginary part of $acf + ade + bce - bdf$.
+\end{proof}
+\begin{question}
+	Show that $\lambda(\alpha + \beta) = \lambda\alpha + \lambda\beta$ for all $\lambda, \alpha, \beta \in \C$
+\end{question}
+\begin{proof}
+	Expanding $\lambda(\alpha + \beta)$ with $\lambda = e+fi$, $\alpha = a+bi$, and $\beta = c+di$ gives a real part of $ea + ec - fb - fd$ and an imaginary part of $eb + ed + fa + fc$. Multiplying out $\lambda\alpha + \lambda\beta$ yields the exact same terms, relying on the distributive property of real numbers to match them up.
+\end{proof}
+\begin{question}
+	Show that for every $\alpha \in \C$, there exists a unique $\beta \in \C$ such that $\alpha + \beta = 0$. 
+\end{question}
+\begin{proof}
+	Setting $\alpha + \beta = 0$ with $\alpha = a+bi$ and $\beta = c+di$ results in $(a+c) + (b+d)i = 0$.\\ Equating the real and imaginary components to zero means $a+c = 0$ and $b+d = 0$, yielding exactly $c = -a$ and $d = -b$. Because every real number has a uniquely defined additive inverse in $\R$, the components $c$ and $d$ exist and are unique, making $\beta$ unique.
+\end{proof}
+\begin{question}
+	Show that for every $\alpha \in \C$ with $\alpha \neq 0$, there exists a unique $\beta \in \C$ such that $\alpha\beta = 1$.
+\end{question}
+\begin{proof}
+	$\alpha = a+bi$, $\beta = c+di$\\
+	Setting $(a+bi)(c+di) = 1$ results in $(ac - bd) + (ad + bc)i = 1 + 0i$. Equating the real and imaginary parts gives a system of two linear equations: $ac - bd = 1$ and $ad + bc = 0$. Since $\alpha \neq 0$, we know that $a$ and $b$ are not both zero, meaning $a^2 + b^2 \neq 0$. Solving this system for $c$ and $d$ yields exactly $c = \frac{a}{a^2+b^2}$ and $d = \frac{-b}{a^2+b^2}$. This produces a single, well-defined real value for both $c$ and $d$.
+\end{proof}
+\begin{question}
+	Show that $\frac{-1 + \sqrt{3}i}{2}$ is a cube root of 1 (meaning that its cube equals 1).
+\end{question}
+\begin{proof}
+	Squaring $\frac{-1 + \sqrt{3}i}{2}$ yields  $\frac{-1 - \sqrt{3}i}{2}$. Multiplying that squared result by the original term $\frac{-1 + \sqrt{3}i}{2}$ gives $\frac{(-1)^2 - (\sqrt{3}i)^2}{4} = \frac{1 - (-3)}{4}$, which reduces perfectly to $1$.
+\end{proof}
+\begin{question}
+	Find two distinct square roots of $i$.
+\end{question}
+\begin{proof}
+	$\frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}i$ and $-\frac{1}{\sqrt{2}} - \frac{1}{\sqrt{2}}i$
+\end{proof}
+\begin{question}
+	Find $x \in \R^4$ such that $(4, -3, 1, 7) + 2x = (5, 9, -6, 8)$.
+\end{question}
+\begin{proof}
+	$(1/2, 6, -7/2, 1/2)$
+\end{proof}
+\begin{question}
+	Explain why there does not exist $\lambda \in \C$ such that $\lambda(2 - 3i, 5 + 4i, -6 + 7i) = (12 - 5i, 7 + 22i, -32 - 9i)$. 
+\end{question}
+\begin{proof}
+	Setting $\lambda(2 - 3i) = 12 - 5i$ for the first component gives $\lambda = \frac{12 - 5i}{2 - 3i}$.\\ Multiplying the numerator and denominator by the conjugate $(2 + 3i)$ yields $\frac{24 + 36i - 10i + 15}{13}$, which simplifies to $\lambda = 3 + 2i$.\\Testing this $\lambda$ on the second component yields $(3 + 2i)(5 + 4i) = 15 + 12i + 10i - 8 = 7 + 22i$, which matches the required vector perfectly.\\Now, applying $\lambda = 3 + 2i$ to the third component gives $(3 + 2i)(-6 + 7i) = -18 + 21i - 12i - 14 = -32 + 9i$. But the required third component in the target vector is $-32 - 9i$.
+\end{proof}
+\begin{question}
+	Show that $(x + y) + z = x + (y + z)$ for all $x, y, z \in \F^n$.   
+\end{question}
+\begin{proof}
+	Let $x = (x_1, \dots, x_n)$, $y = (y_1, \dots, y_n)$, and $z = (z_1, \dots, z_n)$. Adding component-wise, the left side gives $((x_1+y_1)+z_1, \dots, (x_n+y_n)+z_n)$. Because addition is associative in the underlying field $\F$, each component $(x_i+y_i)+z_i$ is equal to $x_i+(y_i+z_i)$. This perfectly constructs the right side $x+(y+z)$.
+\end{proof}
+\begin{question}
+	Show that $(ab)x = a(bx)$ for all $x \in \F^n$ and all $a, b \in \F$.   
+\end{question}
+\begin{proof}
+	Expanding $x$ as $(x_1, \dots, x_n)$ means the left side $(ab)x$ becomes $((ab)x_1, \dots, (ab)x_n)$. The right side $a(bx)$ evaluates to $a(bx_1, \dots, bx_n)$, which then scales to $(a(bx_1), \dots, a(bx_n))$. Because multiplication within the underlying field $\F$ is associative, $(ab)x_i = a(bx_i)$ for every component
+\end{proof}
+\begin{question}
+	Show that $1x = x$ for all $x \in \F^n$.  
+\end{question}
+\begin{proof}
+	Expanding $x$ into its components $(x_1, \dots, x_n)$ gives $1x = (1x_1, \dots, 1x_n)$. Because $1$ is the multiplicative identity in the field $\F$, $1x_i = x_i$ for every individual component. This gives us the original vector $x$.
+\end{proof}
+\begin{question}
+	Show that $\lambda(x + y) = \lambda x + \lambda y$ for all $\lambda \in \F$ and all $x, y \in \F^n$.   
+\end{question}
+\begin{proof}
+	Expanding $\lambda(x + y)$ component-wise gives $(\lambda(x_1 + y_1), \dots, \lambda(x_n + y_n))$. Because the underlying field $\F$ has the distributive property, each component expands to $\lambda x_i + \lambda y_i$. This perfectly matches the component-wise expansion of the right side, $\lambda x + \lambda y = (\lambda x_1 + \lambda y_1, \dots, \lambda x_n + \lambda y_n)$.
+\end{proof}
+\begin{question}
+	Show that $(a + b)x = ax + bx$ for all $a, b \in \F$ and all $x \in \F^n$.   
+\end{question}
+\begin{proof}
+	Expanding $(a + b)x$ component-wise yields $((a + b)x_1, \dots, (a + b)x_n)$. Applying the distributive property of the underlying field $\F$ to each component gives $(ax_1 + bx_1, \dots, ax_n + bx_n)$. This perfectly matches the right side $ax + bx$ when you add the scaled vectors $(ax_1, \dots, ax_n)$ and $(bx_1, \dots, bx_n)$ together.
+\end{proof}
+\subsection{Exercise 1B}
+\setcounter{question}{0}
+\begin{question}
+	Prove that $-(-v) = v$ for every $v \in \V$.   
+\end{question}
+\begin{proof}
+	$$-(-v) = -(-v) + 0$$$$-(-v) = -(-v) + (-v + v)$$$$-(-v) = (-(-v) + -v) + v$$$$-(-v) = 0 + v$$$$-(-v) = v$$
+\end{proof}
+\begin{question}
+	Suppose $a \in \F, v \in \V,$ and $av = 0$. Prove that $a = 0$ or $v = 0$.   
+\end{question}
+\begin{proof}
+	Given equation:$$av = 0$$
+	Since $a \in \F$ (a field) and $a \neq 0$, it has a multiplicative inverse $a^{-1} \in \F$.
+	$$a^{-1}(av) = a^{-1}(0)$$
+	$$a^{-1}(av) = 0$$
+	By associativity of scalar multiplication:
+	$$(a^{-1}a)v = 0$$
+	$$1v = 0$$
+	$$v = 0$$
+	If $a \neq 0$, then $v$ must be $0$. Therefore, if $av = 0$, it must be true that either $a = 0$ or $v = 0$.
+\end{proof}
+\begin{question}
+	Suppose $v, w \in \V$. Explain why there exists a unique $x \in \V$ such that $v + 3x = w$.   
+\end{question}
+\begin{proof}
+	First we prove existence:
+	$$x = \frac{1}{3}(w - v)$$
+	Since a vector space is closed under addition and scalar multiplication $x \in \V$\\
+	Now for uniqueness:\\
+	Suppose there are two vectors, $x_1$ and $x_2$ in $V$, that both satisfy the equation.
+	$$v + 3x_1 = v + 3x_2$$
+	$$-v + (v + 3x_1) = -v + (v + 3x_2)$$
+	Using associativity and additive inverse properties,
+	$$3x_1 = 3x_2$$
+	$$x_1 = x_2$$
+	Thus x is unique.
+\end{proof}
+\begin{question}
+	The empty set is not a vector space. The empty set fails to satisfy only one of the requirements listed in the definition of a vector space. Which one?   
+\end{question}
+\begin{proof}
+	It doesn't have the zero element.
+\end{proof}
+\begin{question}
+	Show that in the definition of a vector space, the additive inverse condition can be replaced with the condition that $0v = 0$ for all $v \in \V$.   
+\end{question}
+\begin{proof}
+	Let's assume the additive inverse condition does not exist. Instead we have $0v = 0$ for all $v \in \V$. We can arrive at the additive inverse criterion from here.
+	$$0v = 0$$
+	$$(1+(-1))v = 0$$
+	Using distributivity,
+	$$1v + (-1)v = 0$$
+	Using multiplicative identity,
+	$$v + (-1)v = 0$$
+	The element $(-1)v$ satisfies the exact requirements of an additive inverse.
+\end{proof}
+\begin{question}
+	Let $\infty$ and $-\infty$ denote two distinct objects, neither of which is in $\R$. Define an addition and scalar multiplication on $\R \cup \{\infty, -\infty\}$ as you could guess from the notation. Specifically, the sum and product of two real numbers is as usual, and for $t \in \R$ define
+	\[
+	t\infty = \begin{cases} 
+		-\infty & \text{if } t < 0, \\
+		0 & \text{if } t = 0, \\
+		\infty & \text{if } t > 0,
+	\end{cases}
+	\qquad
+	t(-\infty) = \begin{cases} 
+		\infty & \text{if } t < 0, \\
+		0 & \text{if } t = 0, \\
+		-\infty & \text{if } t > 0,
+	\end{cases}
+	\]
+	and
+	\begin{align*}
+		t + \infty &= \infty + t = \infty + \infty = \infty, \\
+		t + (-\infty) &= (-\infty) + t = (-\infty) + (-\infty) = -\infty, \\
+		\infty + (-\infty) &= (-\infty) + \infty = 0.
+	\end{align*}
+	With these operations of addition and scalar multiplication, is $\R \cup \{\infty, -\infty\}$ a vector space over $\R$? Explain.
+\end{question}
+\begin{proof}
+	It is not a vector space.\\
+	If t + $\infty = \infty$, we have:
+	$$1 + \infty = 2 + \infty$$
+	$$1=2$$
+	We can cancel out the $\infty$ on both sides due to existence of additive inverse.
+\end{proof}
+\begin{question}
+	Suppose $S$ is a nonempty set. Let $\V^S$ denote the set of functions from $S$ to $\V$. Define a natural addition and scalar multiplication on $\V^S$, and show that $\V^S$ is a vector space with these definitions.   
+\end{question}
+\begin{proof}
+	Because $\V$ is a vector space, $\V^S$ will obey all vector space axioms through point-wise evaluations for every $x \in S$.
+	\begin{itemize}
+	\item Commutativity \& Associativity: $(f+g)(x) = f(x) + g(x) = g(x) + f(x) = (g+f)(x)$. Associativity follows the exact same logic.
+	\item Additive Identity: The zero function, defined by $0(x) = 0$ for all $x \in S$.
+	\item Additive Inverse: The function defined point-wise by $(-f)(x) = -(f(x))$.
+	\item Distributive Properties: $a(f+g)(x) = a(f(x) + g(x)) = af(x) + ag(x) = (af + ag)(x)$.
+\end{itemize}
+\end{proof}
+\begin{question}
+	\textbf{8}\quad Suppose $\V$ is a real vector space.
+	\begin{itemize}
+		\item The \textit{complexification} of $\V$, denoted by $\V_{\C}$, equals $\V \times \V$. An element of $\V_{\C}$ is an ordered pair $(u, v)$, where $u, v \in \V$, but we write this as $u + iv$.
+		\item Addition on $\V_{\C}$ is defined by
+		\[
+		(u_1 + iv_1) + (u_2 + iv_2) = (u_1 + u_2) + i(v_1 + v_2)
+		\]
+		for all $u_1, v_1, u_2, v_2 \in \V$.
+		\item Complex scalar multiplication on $V_{\C}$ is defined by
+		\[
+		(a + bi)(u + iv) = (au - bv) + i(av + bu)
+		\]
+		for all $a, b \in \R$ and all $u, v \in \V$.
+	\end{itemize}
+	
+	Prove that with the definitions of addition and scalar multiplication as above, $\V_{\C}$ is a complex vector space.
+\end{question}
+\begin{proof}
+	Because $\V$ is a real vector space, it is inherently closed under its own addition and scalar multiplication. Therefore, $(u_1 + u_2) \in \V$, $(v_1 + v_2) \in \V$, $(au - bv) \in V$, and $(av + bu) \in \V$, guaranteeing the operations always produce valid elements of $\V_\C$. \\
+	The following properties are also satisfied:\\
+	\begin{itemize}
+	\item Additive Identity: $0 + i0$ (since $0 \in \V$).
+	\item Additive Inverse: $-(u) + i(-v)$ (since $\V$ contains inverses for $u$ and $v$).
+	\item Multiplicative Identity: $1 + i0$ acts as the scalar $1$, yielding $1u - 0v + i(1v + 0u) = u + iv$.
+	\item Associativity, Commutativity, and Distributivity: These expand algebraically and hold true because the vectors in $\V$ and scalars in $\R$ already obey these rules.
+	\end{itemize}
+\end{proof}
