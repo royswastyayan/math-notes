@@ -433,3 +433,39 @@ subspace of $V$ containing $\V_1, \dots , \V_m.$
 	\item Associativity, Commutativity, and Distributivity: These expand algebraically and hold true because the vectors in $\V$ and scalars in $\R$ already obey these rules.
 	\end{itemize}
 \end{proof}
+\subsection{Exercise 1C}
+\setcounterpageref{question}{0}
+\begin{question}
+	For each of the following subsets of $\mathbf{F}^3$, determine whether it is a subspace of $\mathbf{F}^3$.
+	\begin{enumerate}
+		\item[(a)] $\{(x_1, x_2, x_3) \in \F^3 : x_1 + 2x_2 + 3x_3 = 0\}$
+		\item[(b)] $\{(x_1, x_2, x_3) \in \F^3 : x_1 + 2x_2 + 3x_3 = 4\}$
+		\item[(c)] $\{(x_1, x_2, x_3) \in \F^3 : x_1 x_2 x_3 = 0\}$
+		\item[(d)] $\{(x_1, x_2, x_3) \in \F^3 : x_1 = 5x_3\}$
+	\end{enumerate}
+\end{question}
+\begin{proof}
+	We only need to check for closure under addition and scalar multiplication and existence of a zero element. By this logic, (a),(d) are subspaces while (b),(c) are not.
+\end{proof}
+\begin{question}
+	\begin{enumerate}
+		Verify all assertions about subspaces below
+		\item[(a)] If $b \in \F$, then
+		\[ \{(x_1, x_2, x_3, x_4) \in \F^4 : x_3 = 5x_4 + b\} \]
+		is a subspace of $\F^4$ if and only if $b = 0$.
+		
+		\item[(b)] The set of continuous real-valued functions on the interval $[0, 1]$ is a subspace of $\R^{[0, 1]}$.
+		
+		\item[(c)] The set of differentiable real-valued functions on $\R$ is a subspace of $\R^{\R}$.
+		
+		\item[(d)] The set of differentiable real-valued functions $f$ on the interval $(0, 3)$ such that $f'(2) = b$ is a subspace of $\R^{(0, 3)}$ if and only if $b = 0$.
+		
+		\item[(e)] The set of all sequences of complex numbers with limit $0$ is a subspace of $\C^\infty$.
+	\end{enumerate}
+\end{question}
+\begin{proof}
+	\begin{enumerate}
+		\item[(a)]Forward direction (If it is a subspace, then $b = 0$): Every subspace must contain the additive identity, which in $\F^4$ is the zero vector $(0,0,0,0)$. Substituting these coordinates into the defining equation yields $0 = 5(0) + b$, which simplifies strictly to $b = 0$.\\
+		Reverse direction (If $b = 0$, then it is a subspace): Setting $b = 0$ changes the subset condition to $x_3 = 5x_4$. Clearly, this is closed under addition, scalar multiplication and the zero vector $(0,0,0,0)$ exists.
+	\end{enumerate}
+\end{proof}
