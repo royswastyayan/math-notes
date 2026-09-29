@@ -468,5 +468,175 @@ subspace of $V$ containing $\V_1, \dots , \V_m.$
 		\item[(a)]Forward direction (If it is a subspace, then $b = 0$): Every subspace must contain the additive identity, which in $\F^4$ is the zero vector $(0,0,0,0)$. Substituting these coordinates into the defining equation yields $0 = 5(0) + b$, which simplifies strictly to $b = 0$.\\
 		Reverse direction (If $b = 0$, then it is a subspace): Setting $b = 0$ changes the subset condition to $x_3 = 5x_4$. Clearly, this is closed under addition, scalar multiplication and the zero vector $(0,0,0,0)$ exists.
 		\item[(b)]
+		To prove that $W$ is a subspace of $\R^{[0, 1]}$, we must verify the three conditions of the Subspace Criterion:
+		\begin{enumerate}
+			\item \text{Presence of the zero vector:} 
+			The zero vector in $\R^{[0, 1]}$ is the zero function, denoted by $\mathbf{0}$, where $\mathbf{0}(x) = 0$ for all $x \in [0, 1]$. Because constant functions are continuous on $\mathbb{R}$, the zero function is continuous on $[0, 1]$. Therefore, $\mathbf{0} \in W$, proving that $W$ is non-empty.
+			
+			\item \text{Closure under vector addition:} 
+			Let $f, g \in W$. By definition, $f$ and $g$ are both continuous functions on $[0, 1]$. From the properties of continuous functions in real analysis, the sum of two continuous functions is continuous. Therefore, the function $(f + g)(x) = f(x) + g(x)$ is continuous on $[0, 1]$, which implies $f + g \in W$.
+			
+			\item \text{Closure under scalar multiplication:} 
+			Let $f \in W$ and $c \in \mathbb{R}$. Since $f$ is a continuous function on $[0, 1]$, its multiplication by a scalar constant $c$ results in a continuous function. Thus, the function $(cf)(x) = c f(x)$ is continuous on $[0, 1]$, meaning $cf \in W$.
+		\end{enumerate}
+		
+		Since $W$ contains the zero vector and is closed under both addition and scalar multiplication, $W$ is a subspace of $\mathbb{R}^{[0, 1]}$.
+		\item[(c)]
+		To prove that $W$ is a subspace of $\mathbb{R}^{\mathbb{R}}$, we verify the three conditions of the Subspace Criterion:
+		\begin{enumerate}
+			\item \text{Presence of the zero vector:} 
+			The zero vector in $\mathbb{R}^{\mathbb{R}}$ is the zero function, denoted by $\mathbf{0}$, where $\mathbf{0}(x) = 0$ for all $x \in \mathbb{R}$. Because constant functions are differentiable everywhere on $\mathbb{R}$ (with a derivative of $0$), the zero function is differentiable. Therefore, $\mathbf{0} \in W$, proving that $W$ is non-empty.
+			
+			\item \text{Closure under vector addition:} 
+			Let $f, g \in W$. By definition, $f$ and $g$ are both differentiable functions on $\mathbb{R}$. From standard calculus theorems, the sum of two differentiable functions is differentiable, and its derivative is given by $(f + g)'(x) = f'(x) + g'(x)$. Therefore, the function $(f + g)$ is differentiable on $\mathbb{R}$, which implies $f + g \in W$.
+			
+			\item \text{Closure under scalar multiplication:} 
+			Let $f \in W$ and $c \in \mathbb{R}$. Since $f$ is a differentiable function on $\mathbb{R}$, its multiplication by a scalar constant $c$ results in a differentiable function, with the derivative $(cf)'(x) = c f'(x)$. Thus, the function $cf$ is differentiable on $\mathbb{R}$, meaning $cf \in W$.
+		\end{enumerate}
+		
+		Since $W$ contains the zero vector and is closed under both vector addition and scalar multiplication, $W$ is a subspace of $\mathbb{R}^{\mathbb{R}}$.
 	\end{enumerate}
+	\item[(d)]
+		Let $\V = \mathbb{R}^{(0,3)}$ and let $W_b = \{f \in \V \mid f \text{ is differentiable on } (0,3) \text{ and } f'(2) = b\}$. We must prove that $W_b$ is a subspace of $\V$ if and only if $b = 0$.
+		
+		($\Rightarrow$) Assume $W_b$ is a subspace of $\V$. Then it must contain the zero vector of $\V$, which is the zero function $\mathbf{0}$ defined by $\mathbf{0}(x) = 0$ for all $x \in (0,3)$. The derivative of the zero function is $\mathbf{0}'(x) = 0$ for all $x \in (0,3)$. Since $\mathbf{0} \in W_b$, it must satisfy the condition defining the set $W_b$, which means $\mathbf{0}'(2) = b$. Thus, $0 = b$.
+		
+		($\Leftarrow$) Assume $b = 0$. We must show that $W_0 = \{f \in \V \mid f \text{ is differentiable on } (0,3) \text{ and } f'(2) = 0\}$ is a subspace. We verify the three conditions of the subspace criterion:
+		\begin{enumerate}
+			\item \text{Presence of the zero vector:} The zero function $\mathbf{0}$ is differentiable, and as shown above, $\mathbf{0}'(2) = 0$. Thus, $\mathbf{0} \in W_0$.
+			\item \text{Closure under vector addition:} Let $f, g \in W_0$. Both are differentiable on $(0, 3)$, so their sum $f+g$ is also differentiable. By the linearity of the derivative, $(f + g)'(2) = f'(2) + g'(2) = 0 + 0 = 0$. Therefore, $f + g \in W_0$.
+			\item \text{Closure under scalar multiplication:} Let $f \in W_0$ and $c \in \mathbb{R}$. The function $cf$ is differentiable, and its derivative at $x=2$ is $(cf)'(2) = c f'(2) = c(0) = 0$. Therefore, $cf \in W_0$.
+		\end{enumerate}
+		Since $W_0$ contains the zero vector and is closed under both addition and scalar multiplication, it is a subspace of $\V$. 
+		
+		Therefore, $W_b$ is a subspace of $\mathbb{R}^{(0,3)}$ if and only if $b = 0$.
+		\item[(e)]\begin{tcolorbox}[colback=yellow!20, colframe=yellow!80!black, title=My thoughts]
+			I don't know anything about complex sequences, but it is easy enough to wager a guess after a google search.
+		\end{tcolorbox}
+		Let $\mathbb{C}^{\infty}$ be the vector space of all sequences of complex numbers, and let $W$ be the set of all sequences of complex numbers with limit $0$[cite: 3]. We will prove that $W$ is a subspace of $\mathbb{C}^{\infty}$.
+		
+		We verify the three conditions of the subspace criterion:
+		\begin{enumerate}
+			\item \text{Presence of the zero vector:} The zero vector in $\mathbb{C}^{\infty}$ is the zero sequence, denoted by $\mathbf{0} = (0, 0, 0, \dots)$, where $z_n = 0$ for all $n \geq 1$. The limit of this constant sequence is $\lim_{n \to \infty} 0 = 0$. Therefore, $\mathbf{0} \in W$, meaning the subset is non-empty.
+			
+			\item \text{Closure under vector addition:} Let $x = (x_n)$ and $y = (y_n)$ be sequences in $W$. By definition, $\lim_{n \to \infty} x_n = 0$ and $\lim_{n \to \infty} y_n = 0$. According to the algebraic limit theorems for sequences, the limit of their sum is given by $\lim_{n \to \infty} (x_n + y_n) = \lim_{n \to \infty} x_n + \lim_{n \to \infty} y_n = 0 + 0 = 0$. Thus, the sequence $x + y \in W$.
+			
+			\item \text{Closure under scalar multiplication:} Let $x = (x_n) \in W$ and let $\lambda \in \mathbb{C}$. By definition, $\lim_{n \to \infty} x_n = 0$. Using the limit laws for scalar multiples, $\lim_{n \to \infty} (\lambda x_n) = \lambda \lim_{n \to \infty} x_n = \lambda \cdot 0 = 0$. Therefore, the sequence $\lambda x \in W$.
+		\end{enumerate}
+		
+		So $W$ is a subspace of $\mathbb{C}^{\infty}$.
+\end{proof}
+\begin{question}
+	Show that the set of differentiable real-valued functions $f$ on the interval $(-4, 4)$ such that $f'(-1) = 3f(2)$ is a subspace of $\mathbf{R}^{(-4,4)}$.
+\end{question}
+\begin{proof}
+	Let $W = \{f \in V \mid f \text{ is differentiable on } (-4, 4) \text{ and } f'(-1) = 3f(2)\}$. We verify that $W$ satisfies the three conditions of a subspace:
+	
+	\begin{enumerate}
+		\item \text{Additive identity:} The zero function, denoted by $\mathbf{0}$, where $\mathbf{0}(x) = 0$ for all $x \in (-4, 4)$, is differentiable. Its derivative is everywhere zero, so $\mathbf{0}'(-1) = 0$. Evaluating the other side gives $3\mathbf{0}(2) = 3(0) = 0$. Thus, $\mathbf{0}'(-1) = 3\mathbf{0}(2)$, meaning $\mathbf{0} \in W$.
+		
+		\item \text{Closed under addition:} Let $f, g \in W$. Since $f$ and $g$ are differentiable, their sum $f + g$ is also differentiable. By the linearity of the derivative, we have:
+		\[ (f + g)'(-1) = f'(-1) + g'(-1) \]
+		Because $f, g \in W$, we can substitute $f'(-1) = 3f(2)$ and $g'(-1) = 3g(2)$:
+		\[ (f + g)'(-1) = 3f(2) + 3g(2) = 3(f(2) + g(2)) = 3(f + g)(2) \]
+		Therefore, $f + g \in W$.
+		
+		\item \text{Closed under scalar multiplication:} Let $f \in W$ and $\lambda \in \R$. The scalar multiple $\lambda f$ is differentiable, and by the linearity of the derivative:
+		\[ (\lambda f)'(-1) = \lambda f'(-1) \]
+		Since $f \in W$, we know $f'(-1) = 3f(2)$, yielding:
+		\[ (\lambda f)'(-1) = \lambda(3f(2)) = 3(\lambda f(2)) = 3(\lambda f)(2) \]
+		Therefore, $\lambda f \in W$.
+	\end{enumerate}
+	
+	Since $W$ contains the zero vector and is closed under both addition and scalar multiplication, $W$ is a subspace of $\R^{(-4,4)}$.
+\end{proof}
+\begin{question}
+	Suppose $b \in \R$. Show that the set of continuous real-valued functions $f$ on the interval $[0, 1]$ such that $\int_0^1 f = b$ is a subspace of $\R^{[0,1]}$ if and only if $b = 0$.
+\end{question}
+\begin{proof}
+	Let $W_b = \left\{f \in V \mid f \text{ is continuous on } [0, 1] \text{ and } \int_0^1 f = b\right\}$. We want to show that $W_b$ is a subspace of $V$ if and only if $b = 0$.
+	
+	($\Rightarrow$) Assume $W_b$ is a subspace of $\R^{[0,1]}$. Then $W_b$ must contain the additive identity of $\R^{[0,1]}$, which is the zero function $\mathbf{0}$ defined by $\mathbf{0}(x) = 0$ for all $x \in [0, 1]$. The zero function is continuous, and its integral is:
+	\[ \int_0^1 \mathbf{0} = \int_0^1 0 \, dx = 0 \]
+	Since $\mathbf{0} \in W_b$, it must satisfy the condition defining the set, meaning $\int_0^1 \mathbf{0} = b$. Therefore, $b = 0$.
+	
+	($\Leftarrow$) Assume $b = 0$. We must show that $W_0 = \left\{f \in \R^{[0,1]} \mid f \text{ is continuous on } [0, 1] \text{ and } \int_0^1 f = 0\right\}$ is a subspace. We verify the three conditions:
+	\begin{enumerate}
+		\item \textbf{Additive identity:} As shown above, the zero function $\mathbf{0}$ is continuous and $\int_0^1 \mathbf{0} = 0$. Thus, $\mathbf{0} \in W_0$.
+		
+		\item \textbf{Closed under addition:} Let $f, g \in W_0$. Since both are continuous, their sum $f + g$ is also continuous. By the linearity of the definite integral:
+		\[ \int_0^1 (f + g) = \int_0^1 f + \int_0^1 g = 0 + 0 = 0 \]
+		Therefore, $f + g \in W_0$.
+		
+		\item \textbf{Closed under scalar multiplication:} Let $f \in W_0$ and $\lambda \in \R$. The scalar multiple $\lambda f$ is continuous, and by the linearity of the integral:
+		\[ \int_0^1 (\lambda f) = \lambda \int_0^1 f = \lambda(0) = 0 \]
+		Therefore, $\lambda f \in W_0$.
+	\end{enumerate}
+	Thus, $W_b$ is a subspace of $\R^{[0,1]}$ if and only if $b = 0$.
+\end{proof}
+\begin{question}
+	Is $\R^2$ a subspace of the complex vector space $\C^2$?
+\end{question}
+\begin{proof}
+	No, $\R^2$ is not a subspace of the complex vector space $\C^2$.
+	
+	To be a subspace of the complex vector space $\C^2$, the subset $\R^2$ must be closed under scalar multiplication for all scalars in the field $\C$. 
+	
+	Consider the vector $v = (1, 0) \in \R^2$ and the complex scalar $\lambda = i \in \C$. 
+	Multiplying the vector by the scalar yields:
+	\[ \lambda v = i(1, 0) = (i, 0) \]
+	Since $i \notin \R$, the resulting vector $(i, 0)$ is not in $\R^2$. 
+\end{proof}
+\begin{question}
+	(a) \quad Is $\{(a, b, c) \in \R^3 : a^3 = b^3\}$ a subspace of $\R^3$?
+	
+	\phantom{\textbf{6}} \quad (b) \quad Is $\{(a, b, c) \in \C^3 : a^3 = b^3\}$ a subspace of $\C^3$?
+\end{question}
+\begin{proof}
+	\textbf{(a) Yes, it is a subspace.}
+	Let $W = \{(a, b, c) \in \R^3 : a^3 = b^3\}$. For real numbers, the function $f(x) = x^3$ is injective, so $a^3 = b^3$ implies $a = b$. Thus, $W$ can be rewritten as $W = \{(a, a, c) \mid a, c \in \R\}$. 
+	We verify the subspace conditions:
+	\begin{enumerate}
+		\item \text{Additive identity:} The zero vector $(0, 0, 0)$ is in $W$ since $0 = 0$.
+		\item \text{Closed under addition:} Let $v_1 = (a_1, a_1, c_1)$ and $v_2 = (a_2, a_2, c_2)$ be in $W$. Their sum $v_1 + v_2 = (a_1+a_2, a_1+a_2, c_1+c_2)$ is in $W$ because its first two coordinates are equal.
+		\item \text{Closed under scalar multiplication:} Let $v = (a, a, c) \in W$ and $\lambda \in \R$. The scalar multiple $\lambda v = (\lambda a, \lambda a, \lambda c)$ is in $W$ because its first two coordinates are equal.
+	\end{enumerate}
+	Therefore, $W$ is a subspace of $\R^3$.
+	
+	\vspace{1em}
+	
+	\textbf{(b) No, it is not a subspace.} 
+	Consider the vectors $v_1 = (1, 1, 0)$ and $v_2 = (\omega, 1, 0)$. 
+	Both vectors are in $U$ because $1^3 = 1^3$ and $\omega^3 = 1 = 1^3$.
+	Their sum is:
+	\[ v_1 + v_2 = (1+\omega, 2, 0) \]
+	For this sum to be in $U$, its coordinates must satisfy $a^3 = b^3$, meaning we must have $(1+\omega)^3 = 2^3 = 8$. 
+	Expanding the left side:
+	\[ (1+\omega)^3 = 1^3 + 3(1^2)\omega + 3(1)\omega^2 + \omega^3 = 1 + 3\omega + 3\omega^2 + 1 = 2 + 3(\omega + \omega^2) \]
+	Since $1 + \omega + \omega^2 = 0$ for cube roots of unity, we know $\omega + \omega^2 = -1$. Thus:
+	\[ (1+\omega)^3 = 2 + 3(-1) = -1 \]
+	Since $-1 \neq 8$, the vector $v_1 + v_2 \notin U$. Because $U$ is not closed under addition, it is not a subspace of $\C^3$.
+\end{proof}
+\begin{question}
+	Prove or give a counterexample: If $U$ is a nonempty subset of $\R^2$ such that $U$ is closed under addition and under taking additive inverses (meaning $-u \in U$ whenever $u \in U$), then $U$ is a subspace of $\R^2$.
+\end{question}
+\begin{proof}
+	The statement is false. We provide a counterexample.
+	
+	Let $U = \mathbf{Z}^2 = \{(m, n) \mid m, n \in \mathbf{Z}\}$, which is the set of all vectors in $\mathbf{R}^2$ with integer coordinates. 
+	
+	We verify that $U$ satisfies the given conditions:
+	\begin{enumerate}
+		\item \textbf{$U$ is nonempty:} The vector $(0, 0) \in U$ because $0$ is an integer.
+		\item \textbf{Closed under addition:} Let $u = (m_1, n_1) \in U$ and $v = (m_2, n_2) \in U$. Their sum is $u + v = (m_1 + m_2, n_1 + n_2)$. Since the sum of two integers is an integer, $u + v \in U$.
+		\item \textbf{Closed under additive inverses:} Let $u = (m, n) \in U$. Its additive inverse is $-u = (-m, -n)$. Since the negative of an integer is an integer, $-u \in U$.
+	\end{enumerate}
+	
+	However, $U$ is not a subspace of $\mathbf{R}^2$ because it is not closed under scalar multiplication over the field $\mathbf{R}$. 
+	
+	For a specific counterexample, let $u = (1, 1) \in U$ and let the scalar $\lambda = \frac{1}{2} \in \mathbf{R}$. Multiplying them yields:
+	\[ \lambda u = \frac{1}{2}(1, 1) = \left(\frac{1}{2}, \frac{1}{2}\right) \]
+	Because $\frac{1}{2}$ is not an integer, the resulting vector $\left(\frac{1}{2}, \frac{1}{2}\right) \notin U$. 
+	
+	Since $U$ is not closed under scalar multiplication, it fails the subspace criterion. Therefore, the statement is false.
 \end{proof}
