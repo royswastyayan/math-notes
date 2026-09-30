@@ -623,7 +623,7 @@ subspace of $V$ containing $\V_1, \dots , \V_m.$
 \begin{proof}
 	The statement is false. We provide a counterexample.
 	
-	Let $U = \mathbf{Z}^2 = \{(m, n) \mid m, n \in \mathbf{Z}\}$, which is the set of all vectors in $\mathbf{R}^2$ with integer coordinates. 
+	Let $U = \mathbb{Z}^2 = \{(m, n) \mid m, n \in \mathbb{Z}\}$, which is the set of all vectors in $\R^2$ with integer coordinates. 
 	
 	We verify that $U$ satisfies the given conditions:
 	\begin{enumerate}
@@ -632,11 +632,190 @@ subspace of $V$ containing $\V_1, \dots , \V_m.$
 		\item \textbf{Closed under additive inverses:} Let $u = (m, n) \in U$. Its additive inverse is $-u = (-m, -n)$. Since the negative of an integer is an integer, $-u \in U$.
 	\end{enumerate}
 	
-	However, $U$ is not a subspace of $\mathbf{R}^2$ because it is not closed under scalar multiplication over the field $\mathbf{R}$. 
+	However, $U$ is not a subspace of $\R^2$ because it is not closed under scalar multiplication over the field $\R$. 
 	
-	For a specific counterexample, let $u = (1, 1) \in U$ and let the scalar $\lambda = \frac{1}{2} \in \mathbf{R}$. Multiplying them yields:
+	For a specific counterexample, let $u = (1, 1) \in U$ and let the scalar $\lambda = \frac{1}{2} \in \R$. Multiplying them yields:
 	\[ \lambda u = \frac{1}{2}(1, 1) = \left(\frac{1}{2}, \frac{1}{2}\right) \]
 	Because $\frac{1}{2}$ is not an integer, the resulting vector $\left(\frac{1}{2}, \frac{1}{2}\right) \notin U$. 
 	
 	Since $U$ is not closed under scalar multiplication, it fails the subspace criterion. Therefore, the statement is false.
+\end{proof}
+\begin{question}
+	Give an example of a nonempty subset $U$ of $\R^2$ such that $U$ is closed under scalar multiplication, but $U$ is not a subspace of $\R^2$.
+\end{question}
+\begin{proof}
+	$ U = \{(x, y) \in \R^2 \mid x = 0 \text{ or } y = 0\} $
+\end{proof}
+\begin{question}
+	A function $f : \R \to \R$ is called \textit{periodic} if there exists a positive number $p$ such that $f(x) = f(x + p)$ for all $x \in \R$. Is the set of periodic functions from $\R$ to $\R$ a subspace of $\R^{\R}$? Explain.
+\end{question}
+\begin{proof}
+	We provide a counterexample. Let $f(x) = \cos(x)$ and $g(x) = \cos(\pi x)$. 
+	Both $f$ and $g$ are periodic functions:
+	\begin{itemize}
+		\item $f$ has a period of $2\pi$, since $\cos(x + 2\pi) = \cos(x)$.
+		\item $g$ has a period of $2$, since $\cos(\pi(x + 2)) = \cos(\pi x + 2\pi) = \cos(\pi x)$.
+	\end{itemize}
+	
+	Let $h = f + g$, so $h(x) = \cos(x) + \cos(\pi x)$. We will show that $h$ is not periodic. 
+	Suppose, for the sake of contradiction, that $h$ is periodic with some positive period $p > 0$. Then $h(x) = h(x + p)$ for all $x \in \R$. 
+	Evaluating at $x = 0$, we get:
+	\[ h(p) = h(0) \]
+	\[ \cos(p) + \cos(\pi p) = \cos(0) + \cos(\pi \cdot 0) = 2 \]
+	Since the maximum value of the real-valued cosine function is $1$, the sum $\cos(p) + \cos(\pi p)$ can only equal $2$ if both terms are exactly $1$:
+	\[ \cos(p) = 1 \quad \text{and} \quad \cos(\pi p) = 1 \]
+	The condition $\cos(p) = 1$ implies that $p = 2\pi k$ for some positive integer $k$. 
+	The condition $\cos(\pi p) = 1$ implies that $\pi p = 2\pi m$, which simplifies to $p = 2m$ for some positive integer $m$. 
+	
+	Equating the two expressions for $p$, we have:
+	\[ 2\pi k = 2m \implies \pi = \frac{m}{k} \]
+	Because $k$ and $m$ are positive integers, this implies that $\pi$ is a rational number. This is a contradiction, as $\pi$ is known to be irrational. 
+	
+	Therefore, our assumption that $h$ is periodic must be false. Because $f$ and $g$ are periodic but their sum $f + g$ is not, the set of periodic functions is not closed under addition. Consequently, it is not a subspace of $\R^{\R}$.
+\end{proof}
+\begin{question}
+	Suppose $\V_1$ and $\V_2$ are subspaces of $\V$. Prove that the intersection $\V_1 \cap \V_2$ is a subspace of $\V$.
+\end{question}
+\begin{proof}
+	Let $\V_1$ and $\V_2$ be subspaces of a vector space $\V$ over a field $\F$.
+	\begin{enumerate}
+		\item \textbf{Additive identity:} Because $\V_1$ and $\V_2$ are subspaces of $\V$, both must contain the additive identity of $\V$. Thus, $0 \in \V_1$ and $0 \in \V_2$. Since $0$ is in both sets, it is in their intersection, meaning $0 \in \V_1 \cap \V_2$.
+		
+		\item \textbf{Closed under addition:} Let $u, w \in \V_1 \cap \V_2$. By definition of the intersection, $u, w \in \V_1$ and $u, w \in \V_2$. Because $\V_1$ is a subspace, it is closed under addition, so $u + w \in \V_1$. Similarly, because $\V_2$ is a subspace, $u + w \in \V_2$. Since $u + w$ is in both $\V_1$ and $\V_2$, it follows that $u + w \in \V_1 \cap \V_2$.
+		
+		\item \textbf{Closed under scalar multiplication:} Let $u \in \V_1 \cap \V_2$ and let $\lambda \in \F$. By definition of the intersection, $u \in \V_1$ and $u \in \V_2$. Because $\V_1$ and $\V_2$ are subspaces, both are closed under scalar multiplication. Therefore, $\lambda u \in \V_1$ and $\lambda u \in \V_2$. Since $\lambda u$ is in both sets, $\lambda u \in \V_1 \cap \V_2$.
+	\end{enumerate}
+\end{proof}
+\begin{question}
+	Prove that the intersection of every collection of subspaces of $V$ is a subspace of $V$.
+\end{question}
+\begin{proof}
+	Let $\{V_i\}_{i \in I}$ be a collection of subspaces of a vector space $V$ over a field $\F$, where $I$ is an index set. Let $W = \bigcap_{i \in I} V_i$ be the intersection of this collection. We verify that $W$ satisfies the three conditions of a subspace:
+	
+	\begin{enumerate}
+		\item \textbf{Additive identity:} Since each $\V_i$ is a subspace of $\V$, the additive identity $0$ must be in every $\V_i$ for all $i \in I$. Because $0$ is in every subspace in the collection, it is in their intersection. Thus, $0 \in W$.
+		
+		\item \textbf{Closed under addition:} Let $u, w \in W$. By the definition of the intersection, $u \in \V_i$ and $w \in \V_i$ for every $i \in I$. Because every $\V_i$ is a subspace, they are all individually closed under addition, meaning $u + w \in \V_i$ for all $i \in I$. Since $u + w$ is in every subspace in the collection, $u + w \in \bigcap_{i \in I} \V_i = W$.
+		
+		\item \textbf{Closed under scalar multiplication:} Let $u \in W$ and $\lambda \in \F$. By definition, $u \in \V_i$ for all $i \in I$. Because each $\V_i$ is a subspace, it is closed under scalar multiplicaticontent...on, so $\lambda u \in \V_i$ for all $i \in I$. Since $\lambda u$ is in every subspace in the collection, $\lambda u \in \bigcap_{i \in I} \V_i = W$.
+	\end{enumerate}
+	
+	Since the intersection $W$ contains the additive identity and is closed under both addition and scalar multiplication, it is a subspace of $\V$.
+\end{proof}
+\begin{question}
+	Prove that the union of two subspaces of $\V$ is a subspace of $\V$ if and only if one of the subspaces is contained in the other.
+\end{question}
+\begin{proof}
+	Let $V_1$ and $V_2$ be subspaces of a vector space $V$. We must prove that $V_1 \cup V_2$ is a subspace if and only if $V_1 \subseteq V_2$ or $V_2 \subseteq V_1$.
+	
+	($\Leftarrow$) Assume one of the subspaces is contained in the other. Without loss of generality, let $V_1 \subseteq V_2$. Then their union is $V_1 \cup V_2 = V_2$. Since $V_2$ is given to be a subspace of $V$, it follows immediately that $V_1 \cup V_2$ is a subspace of $V$.
+	
+	($\Rightarrow$) Assume that the union $V_1 \cup V_2$ is a subspace of $V$. We want to show that either $V_1 \subseteq V_2$ or $V_2 \subseteq V_1$. 
+	
+	Suppose, for the sake of contradiction, that neither subspace is contained in the other. 
+	This means there exists some vector $u \in V_1$ such that $u \notin V_2$, and there exists some vector $w \in V_2$ such that $w \notin V_1$.
+	
+	Since $u \in V_1$ and $w \in V_2$, both vectors are in $V_1 \cup V_2$. Because we assumed $V_1 \cup V_2$ is a subspace, it must be closed under vector addition. Therefore, the sum $u + w$ must be in $V_1 \cup V_2$. 
+	By the definition of the union, this implies that either $u + w \in V_1$ or $u + w \in V_2$.
+	
+	\textbf{Case 1:} Suppose $u + w \in V_1$. 
+	Since $V_1$ is a subspace, it is closed under additive inverses and addition, so it must contain $-u$. Therefore, $(u + w) + (-u) \in V_1$, which simplifies to $w \in V_1$. This directly contradicts our initial assumption that $w \notin V_1$.
+	
+	\textbf{Case 2:} Suppose $u + w \in V_2$. 
+	Similarly, since $V_2$ is a subspace, it contains $-w$. Therefore, $(u + w) + (-w) \in V_2$, which simplifies to $u \in V_2$. This directly contradicts our initial assumption that $u \notin V_2$.
+	
+	In both cases, we arrive at a contradiction. Therefore, our assumption that neither subspace is contained in the other must be false. We conclude that $V_1 \subseteq V_2$ or $V_2 \subseteq V_1$.
+\end{proof}
+\begin{question}
+	Prove that the union of three subspaces of $\V$ is a subspace of $\V$ if and only if one of the subspaces contains the other two.
+\end{question}
+\begin{proof}
+	Let $W = \V_1 \cup \V_2 \cup \V_3$. We want to prove that $W$ is a subspace of $\V$ if and only if one of the subspaces contains the other two. (Note: This proof assumes the underlying field $\F$ is $\R$ or $\C$, which means it has more than 2 elements).
+	
+	($\Leftarrow$) Assume one subspace contains the other two. Without loss of generality, let $\V_1$ contain $\V_2$ and $\V_3$. Then the union $\V_1 \cup \V_2 \cup \V_3 = \V_1$. Because $\V_1$ is given to be a subspace of $\V$, their union is trivially a subspace of $\V$.
+	
+	($\Rightarrow$) Assume $W = \V_1 \cup \V_2 \cup \V_3$ is a subspace of $\V$. We want to show that one of the subspaces contains the other two. 
+	
+	Suppose for the sake of contradiction that no single subspace contains the other two. 
+	If the union of any two of these subspaces completely covered $W$ (for example, if $W = \V_1 \cup \V_2$), then by the known theorem for the union of two subspaces, we would have $\V_1 \subseteq \V_2$ or $\V_2 \subseteq \V_1$. This would mean $W = \V_2$ or $W = \V_1$, implying that one subspace contains all three. 
+	Since we assumed no single subspace contains the other two, no two subspaces can cover $W$. 
+	
+	Therefore, there must exist vectors that strictly belong to only one of the subspaces:
+	\begin{itemize}
+		\item There is some $v_1 \in \V_1$ such that $v_1 \notin \V_2 \cup \V_3$.
+		\item There is some $v_2 \in \V_2$ such that $v_2 \notin \V_1 \cup \V_3$.
+	\end{itemize}
+	
+	Because $W$ is a subspace, it is closed under vector addition and scalar multiplication. Let $c$ be any non-zero scalar. The vector $v_1 + c v_2$ must be in $W$, meaning it is in $\V_1$, $\V_2$, or $\V_3$.
+	\begin{itemize}
+		\item If $v_1 + c v_2 \in \V_1$: Since $\V_1$ is a subspace, it contains $-v_1$. Thus, $(v_1 + c v_2) - v_1 = c v_2 \in \V_1$. Because $c \neq 0$, this implies $v_2 \in \V_1$, which contradicts our choice of $v_2$.
+		\item If $v_1 + c v_2 \in \V_2$: Since $\V_2$ is a subspace, it contains $-cv_2$. Thus, $(v_1 + c v_2) - c v_2 = v_1 \in \V_2$, which contradicts our choice of $v_1$.
+	\end{itemize}
+	
+	Thus, for every non-zero scalar $c$, the vector $v_1 + c v_2$ must belong to $\V_3$.
+	
+	Because our field $\F$ is $\R$ or $\C$, there are infinitely many scalars. We can pick two distinct non-zero scalars, say $c = 1$ and $c = 2$.
+	Based on the logic above, both $v_1 + v_2 \in \V_3$ and $v_1 + 2v_2 \in \V_3$.
+	Since $V_3$ is a subspace, it is closed under vector subtraction, meaning:
+	\[ (v_1 + 2v_2) - (v_1 + v_2) = v_2 \in \V_3 \]
+	But this directly contradicts our initial choice that $v_2 \notin \V_1 \cup \V_3$. 
+	
+	This contradiction means our assumption that no subspace contains the other two must be false. Therefore, one of the subspaces must contain the other two.
+\end{proof}
+\begin{question}
+	Suppose
+	\[ U = \{(x, -x, 2x) \in \F^3 : x \in \F\} \quad \text{and} \quad W = \{(x, x, 2x) \in \F^3 : x \in \F\}. \]
+	Describe $U + W$ using symbols, and also give a description of $U + W$ that uses no symbols.
+\end{question}
+\begin{proof}
+	Let $u = (x, -x, 2x) \in U$ and $w = (y, y, 2y) \in W$ for some scalars $x, y \in \F$. 
+	Their sum is:
+	\[ u + w = (x, -x, 2x) + (y, y, 2y) = (x + y, -x + y, 2x + 2y) \]
+	
+	Let this resulting vector be $(a, b, c)$. We can relate its coordinates to the scalars $x$ and $y$:
+	\begin{align*}
+		a &= x + y \\
+		b &= -x + y \\
+		c &= 2x + 2y = 2(x + y)
+	\end{align*}
+	Notice that the third coordinate $c$ is always exactly twice the first coordinate $a$ (since $c = 2a$). 
+	
+	To ensure that every vector of the form $(a, b, 2a)$ is indeed in $U + W$, we must show that for any given $a, b \in \F$, there exist $x, y \in \F$ that satisfy the system:
+	\begin{align*}
+		x + y &= a \\
+		-x + y &= b
+	\end{align*}
+	So $y = \frac{a+b}{2}$, $x = \frac{a-b}{2}$. 
+	Because the underlying field $\F$ is either $\R$ or $\C$, division by 2 is valid, meaning such scalars $x$ and $y$ will always exist for any choice of $a$ and $b$.
+	
+	Therefore, the sum $U + W$ can be described using symbols as:
+	\[ U + W = \{(a, b, 2a) \in \F^3 : a, b \in \F\} \]
+	Alternatively, writing the condition as a relationship between coordinates $(x, y, z)$:
+	\[ U + W = \{(x, y, z) \in \F^3 : z = 2x\} \]
+	
+	\vspace{1em}
+	
+	\textbf{Description using no symbols:} \\
+	The sum is the set of all vectors in the three-dimensional vector space where the third coordinate is exactly twice the first coordinate.
+\end{proof}
+\begin{question}
+	Suppose $U$ is a subspace of $V$. What is $U + U$?
+\end{question}
+\begin{proof}
+	We claim that $U + U = U$.
+	
+	To prove this, we show subset inclusion in both directions.
+	
+	First, we show that $U + U \subseteq U$. 
+	Let $x \in U + U$. By definition of the sum of subsets, $x = u_1 + u_2$ for some vectors $u_1, u_2 \in U$. 
+	Since $U$ is a subspace, it is closed under vector addition, which implies $u_1 + u_2 \in U$. 
+	Therefore, $x \in U$, establishing that $U + U \subseteq U$.
+	
+	Next, we show that $U \subseteq U + U$. 
+	Let $u \in U$. Since $U$ is a subspace, it contains the additive identity $0$. 
+	We can express $u$ as the sum $u = u + 0$. 
+	Because $u \in U$ and $0 \in U$, the sum $u + 0$ is an element of $U + U$. 
+	Therefore, $u \in U + U$, establishing that $U \subseteq U + U$.
+	
+	Since $U + U \subseteq U$ and $U \subseteq U + U$, we conclude that $U + U = U$.
 \end{proof}
