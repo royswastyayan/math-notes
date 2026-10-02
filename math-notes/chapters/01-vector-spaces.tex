@@ -819,3 +819,168 @@ subspace of $V$ containing $\V_1, \dots , \V_m.$
 	
 	Since $U + U \subseteq U$ and $U \subseteq U + U$, we conclude that $U + U = U$.
 \end{proof}
+\begin{question}
+	Is the operation of addition on the subspaces of $\V$ commutative? In other words, if $U$ and $W$ are subspaces of $\V$, is $U + W = W + U$?
+\end{question}
+\begin{proof}
+	Yes, the operation of addition on the subspaces of $\V$ is commutative. 
+	
+	To prove that $U + W = W + U$, we must show that each set is a subset of the other.
+	
+	First, let $x \in U + W$. By the definition of the sum of subspaces, $x = u + w$ for some vectors $u \in U$ and $w \in W$. 
+	Because vector addition in $V$ is commutative, we have $u + w = w + u$. 
+	Since $w \in W$ and $u \in U$, the vector $w + u$ is in $W + U$. 
+	Therefore, $x \in W + U$, establishing that $U + W \subseteq W + U$.
+	
+	Next, let $y \in W + U$. By definition, $y = w + u$ for some vectors $w \in W$ and $u \in U$. 
+	Again, by the commutativity of vector addition in $V$, $w + u = u + w$. 
+	Since $u \in U$ and $w \in W$, the vector $u + w$ is in $U + W$. 
+	Therefore, $y \in U + W$, establishing that $W + U \subseteq U + W$.
+	
+	Because $U + W \subseteq W + U$ and $W + U \subseteq U + W$, we conclude that $U + W = W + U$.
+\end{proof}
+\begin{question}
+	Is the operation of addition on the subspaces of $\V$ associative? In other words, if $\V_1, \V_2, \V_3$ are subspaces of $\V$, is
+	\[ (\V_1 + \V_2) + \V_3 = \V_1 + (\V_2 + \V_3)? \]
+\end{question}
+\begin{proof}
+	Yes, the operation of addition on the subspaces of $\V$ is associative.
+	
+	To prove that $(\V_1 + \V_2) + \V_3 = \V_1 + (\V_2 + \V_3)$, we show subset inclusion in both directions.
+	
+	First, let $x \in (\V_1 + \V_2) + \V_3$. By definition, $x = u + v_3$ for some $u \in \V_1 + \V_2$ and $v_3 \in \V_3$. 
+	Since $u \in \V_1 + \V_2$, we can write $u = v_1 + v_2$ for some $v_1 \in \V_1$ and $v_2 \in \V_2$. 
+	Substituting for $u$ yields $x = (v_1 + v_2) + v_3$. 
+	Because vector addition in $V$ is associative, we can rewrite this as $x = v_1 + (v_2 + v_3)$. 
+	Let $w = v_2 + v_3$. Since $v_2 \in \V_2$ and $v_3 \in \V_3$, by definition $w \in \V_2 + \V_3$. 
+	Therefore, $x = v_1 + w$, which means $x \in \V_1 + (\V_2 + \V_3)$. 
+	This establishes that $(\V_1 + \V_2) + \V_3 \subseteq \V_1 + (\V_2 + \V_3)$.
+	
+	Next, let $y \in \V_1 + (\V_2 + \V_3)$. By definition, $y = v_1 + w$ for some $v_1 \in V_1$ and $w \in \V_2 + \V_3$. 
+	Since $w \in \V_2 + \V_3$, we can write $w = v_2 + v_3$ for some $v_2 \in \V_2$ and $v_3 \in \V_3$. 
+	Substituting for $w$ yields $y = v_1 + (v_2 + v_3)$. 
+	By the associativity of vector addition in $\V$, we can rewrite this as $y = (v_1 + v_2) + v_3$. 
+	Let $u = v_1 + v_2$. Since $v_1 \in \V_1$ and $v_2 \in \V_2$, by definition $u \in \V_1 + \V_2$. 
+	Therefore, $y = u + v_3$, which means $y \in (\V_1 + \V_2) + \V_3$. 
+	This establishes that $\V_1 + (\V_2 + \V_3) \subseteq (\V_1 + \V_2) + \V_3$.
+	
+	Since both sets are subsets of each other, $(\V_1 + \V_2) + \V_3 = \V_1 + (\V_2 + \V_3)$.
+\end{proof}
+\begin{question}
+	Does the operation of addition on the subspaces of $\V$ have an additive identity? Which subspaces have additive inverses?
+\end{question}
+\begin{proof}
+	Yes, the operation of addition on the subspaces of $\V$ has an additive identity, which is the trivial subspace $\{0\}$.
+	
+	To verify this, let $U$ be any subspace of $V$. By the definition of subspace addition, 
+	\[ U + \{0\} = \{u + 0 \mid u \in U\} = \{u \mid u \in U\} = U \]
+	Therefore, $\{0\}$ is the additive identity.
+	
+	Regarding additive inverses, only the trivial subspace $\{0\}$ has an additive inverse. 
+	
+	To prove this, suppose a subspace $U$ has an additive inverse $W$. By definition, this means $U + W = \{0\}$. 
+	Because $W$ is a subspace, it must contain the zero vector $0$. 
+	Let $u$ be any vector in $U$. The sum $u + 0$ must be in $U + W$. 
+	Since $U + W = \{0\}$, it follows that $u + 0 = 0$, which means $u = 0$. 
+	Because this must be true for every vector $u \in U$, the only element in $U$ is the zero vector, so $U = \{0\}$. 
+	Thus, no non-trivial subspace can have an additive inverse.
+\end{proof}
+\begin{question}
+	Prove or give a counterexample: If $\V_1, \V_2, U$ are subspaces of $\V$ such that
+	\[ \V_1 + U = \V_2 + U, \]
+	then $\V_1 = \V_2$.
+\end{question}
+\begin{proof}
+	The statement is false. We provide a counterexample.
+	
+	Let $V = \R^2$. Consider the following subspaces:
+	\begin{itemize}
+		\item $U = \{(x, 0) \mid x \in \R\}$ (the $x$-axis)
+		\item $V_1 = \{(0, y) \mid y \in \R\}$ (the $y$-axis)
+		\item $V_2 = \{(x, x) \mid x \in \R\}$ (the line $y=x$)
+	\end{itemize}
+	
+	First, we evaluate $\V_1 + U$. Any vector $(a, b) \in \R^2$ can be written as $(0, b) + (a, 0)$. Since $(0, b) \in \V_1$ and $(a, 0) \in U$, their sum spans the entire space. Thus, $\V_1 + U = \R^2$.
+	
+	Next, we evaluate $\V_2 + U$. Any vector $(a, b) \in \R^2$ can be written as $(b, b) + (a-b, 0)$. Since $(b, b) \in \V_2$ and $(a-b, 0) \in U$, this sum also spans the entire space. Thus, $\V_2 + U = \R^2$.
+	
+	We have established that $V_1 + U = V_2 + U = \R^2$. 
+	However, $\V_1 \neq \V_2$ (for example, the vector $(0, 1)$ is in $\V_1$ but not in $\V_2$). 
+	Because $\V_1 + U = \V_2 + U$ does not imply $\V_1 = \V_2$, the statement is false.
+\end{proof}
+\begin{question}
+	Suppose
+	\[ U = \{(x, x, y, y) \in \F^4 : x, y \in \F\}. \]
+	Find a subspace $W$ of $\F^4$ such that $\F^4 = U \oplus W$.
+\end{question}
+\begin{proof}
+	$W = \{(0, a, 0, b) \in \F^4 : a, b \in \F\}$.
+\end{proof}
+\begin{question}
+	Suppose
+	\[ U = \{(x, y, x + y, x - y, 2x) \in \F^5 : x, y \in \F\}. \]
+	Find a subspace $W$ of $\F^5$ such that $\F^5 = U \oplus W$.
+\end{question}
+\begin{proof}
+	$W = \{(0, 0, a, b, c) \in \F^5 : a, b, c \in \F\}$.
+\end{proof}
+\begin{question}
+	Suppose
+	\[ U = \{(x, y, x + y, x - y, 2x) \in \F^5 : x, y \in \F\}. \]
+	Find three subspaces $W_1, W_2, W_3$ of $\F^5$, none of which equals $\{0\}$, such that $\F^5 = U \oplus W_1 \oplus W_2 \oplus W_3$.
+\end{question}
+\begin{proof}
+	\begin{align*}
+		W_1 &= \{(0, 0, a, 0, 0) \in \F^5 : a \in \F\} \\
+		W_2 &= \{(0, 0, 0, b, 0) \in \F^5 : b \in \F\} \\
+		W_3 &= \{(0, 0, 0, 0, c) \in \F^5 : c \in \F\}
+	\end{align*}
+\end{proof}
+\begin{question}
+	Prove or give a counterexample: If $\V_1, \V_2, U$ are subspaces of $\V$ such that
+	\[ \V = \V_1 \oplus U \quad \text{and} \quad \V = \V_2 \oplus U, \]
+	then $\V_1 = \V_2$.
+\end{question}
+\begin{proof}
+	The statement is false. We provide a counterexample.
+	\begin{itemize}
+		\item $U = \{(x, 0) \mid x \in \R\}$ (the $x$-axis)
+		\item $\V_1 = \{(0, y) \mid y \in \R\}$ (the $y$-axis)
+		\item $\V_2 = \{(y, y) \mid y \in \R\}$ (the line $y = x$)
+	\end{itemize}
+\end{proof}
+\begin{question}
+	A function $f : \R \to \R$ is called \textit{even} if
+	\[ f(-x) = f(x) \]
+	for all $x \in \R$. A function $f : \R \to \R$ is called \textit{odd} if
+	\[ f(-x) = -f(x) \]
+	for all $x \in \R$. Let $\V_e$ denote the set of real-valued even functions on $\R$ and let $\V_o$ denote the set of real-valued odd functions on $\R$. Show that $\R^{\R} = \V_e \oplus \V_o$
+\end{question}
+\begin{proof}
+	To prove that $\mathbf{R}^{\mathbf{R}} = V_e \oplus V_o$, we must show that $V_e \cap V_o = \{0\}$ and $V_e + V_o = \mathbf{R}^{\mathbf{R}}$.
+	
+	First, we show that $V_e \cap V_o = \{0\}$. Let $f \in V_e \cap V_o$. 
+	Because $f \in V_e$, it must be an even function, so $f(-x) = f(x)$ for all $x \in \mathbf{R}$.
+	Because $f \in V_o$, it must be an odd function, so $f(-x) = -f(x)$ for all $x \in \mathbf{R}$.
+	Equating the two expressions for $f(-x)$, we get:
+	\[ f(x) = -f(x) \]
+	\[ 2f(x) = 0 \]
+	\[ f(x) = 0 \]
+	Since $f(x) = 0$ for all $x \in \mathbf{R}$, $f$ is the zero function. Thus, $V_e \cap V_o = \{0\}$.
+	
+	Next, we show that $V_e + V_o = \mathbf{R}^{\mathbf{R}}$. Let $f \in \mathbf{R}^{\mathbf{R}}$ be an arbitrary real-valued function. 
+	We can rewrite $f(x)$ identically as:
+	\[ f(x) = \frac{f(x) + f(-x)}{2} + \frac{f(x) - f(-x)}{2} \]
+	Let $f_e(x) = \frac{f(x) + f(-x)}{2}$ and $f_o(x) = \frac{f(x) - f(-x)}{2}$. 
+	We now check if $f_e \in V_e$ and $f_o \in V_o$. 
+	For $f_e$:
+	\[ f_e(-x) = \frac{f(-x) + f(-(-x))}{2} = \frac{f(-x) + f(x)}{2} = f_e(x) \]
+	Since $f_e(-x) = f_e(x)$, $f_e$ is an even function, so $f_e \in V_e$.
+	For $f_o$:
+	\[ f_o(-x) = \frac{f(-x) - f(-(-x))}{2} = \frac{f(-x) - f(x)}{2} = -\left(\frac{f(x) - f(-x)}{2}\right) = -f_o(x) \]
+	Since $f_o(-x) = -f_o(x)$, $f_o$ is an odd function, so $f_o \in V_o$.
+	
+	Since any arbitrary function $f \in \mathbf{R}^{\mathbf{R}}$ can be expressed as the sum of an even function $f_e \in V_e$ and an odd function $f_o \in V_o$, we have $V_e + V_o = \mathbf{R}^{\mathbf{R}}$.
+	
+	Since $V_e \cap V_o = \{0\}$ and $V_e + V_o = \mathbf{R}^{\mathbf{R}}$, we conclude that $\mathbf{R}^{\mathbf{R}} = V_e \oplus V_o$.
+\end{proof}
