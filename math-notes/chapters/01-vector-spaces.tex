@@ -957,18 +957,18 @@ subspace of $V$ containing $\V_1, \dots , \V_m.$
 	for all $x \in \R$. Let $\V_e$ denote the set of real-valued even functions on $\R$ and let $\V_o$ denote the set of real-valued odd functions on $\R$. Show that $\R^{\R} = \V_e \oplus \V_o$
 \end{question}
 \begin{proof}
-	To prove that $\mathbf{R}^{\mathbf{R}} = V_e \oplus V_o$, we must show that $V_e \cap V_o = \{0\}$ and $V_e + V_o = \mathbf{R}^{\mathbf{R}}$.
+	To prove that $\R^{\R} = V_e \oplus V_o$, we must show that $V_e \cap V_o = \{0\}$ and $V_e + V_o = \R^{\R}$.
 	
 	First, we show that $V_e \cap V_o = \{0\}$. Let $f \in V_e \cap V_o$. 
-	Because $f \in V_e$, it must be an even function, so $f(-x) = f(x)$ for all $x \in \mathbf{R}$.
-	Because $f \in V_o$, it must be an odd function, so $f(-x) = -f(x)$ for all $x \in \mathbf{R}$.
+	Because $f \in V_e$, it must be an even function, so $f(-x) = f(x)$ for all $x \in \R$.
+	Because $f \in V_o$, it must be an odd function, so $f(-x) = -f(x)$ for all $x \in \R$.
 	Equating the two expressions for $f(-x)$, we get:
 	\[ f(x) = -f(x) \]
 	\[ 2f(x) = 0 \]
 	\[ f(x) = 0 \]
-	Since $f(x) = 0$ for all $x \in \mathbf{R}$, $f$ is the zero function. Thus, $V_e \cap V_o = \{0\}$.
+	Since $f(x) = 0$ for all $x \in \R$, $f$ is the zero function. Thus, $V_e \cap V_o = \{0\}$.
 	
-	Next, we show that $V_e + V_o = \mathbf{R}^{\mathbf{R}}$. Let $f \in \mathbf{R}^{\mathbf{R}}$ be an arbitrary real-valued function. 
+	Next, we show that $V_e + V_o = \R^{\R}$. Let $f \in \R^{\R}$ be an arbitrary real-valued function. 
 	We can rewrite $f(x)$ identically as:
 	\[ f(x) = \frac{f(x) + f(-x)}{2} + \frac{f(x) - f(-x)}{2} \]
 	Let $f_e(x) = \frac{f(x) + f(-x)}{2}$ and $f_o(x) = \frac{f(x) - f(-x)}{2}$. 
@@ -980,7 +980,7 @@ subspace of $V$ containing $\V_1, \dots , \V_m.$
 	\[ f_o(-x) = \frac{f(-x) - f(-(-x))}{2} = \frac{f(-x) - f(x)}{2} = -\left(\frac{f(x) - f(-x)}{2}\right) = -f_o(x) \]
 	Since $f_o(-x) = -f_o(x)$, $f_o$ is an odd function, so $f_o \in V_o$.
 	
-	Since any arbitrary function $f \in \mathbf{R}^{\mathbf{R}}$ can be expressed as the sum of an even function $f_e \in V_e$ and an odd function $f_o \in V_o$, we have $V_e + V_o = \mathbf{R}^{\mathbf{R}}$.
+	Since any arbitrary function $f \in \R^{\R}$ can be expressed as the sum of an even function $f_e \in V_e$ and an odd function $f_o \in V_o$, we have $V_e + V_o = \R^{\R}$.
 	
-	Since $V_e \cap V_o = \{0\}$ and $V_e + V_o = \mathbf{R}^{\mathbf{R}}$, we conclude that $\mathbf{R}^{\mathbf{R}} = V_e \oplus V_o$.
+	Since $V_e \cap V_o = \{0\}$ and $V_e + V_o = \R^{\R}$, we conclude that $\R^{\R} = V_e \oplus V_o$.
 \end{proof}

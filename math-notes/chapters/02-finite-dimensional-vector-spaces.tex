@@ -1,0 +1,489 @@
+\section{Finite-Dimensional Vector Spaces}
+
+\subsection{Span and Linear Independence}
+\subsubsection{Linear Combinations and Span}
+\begin{definition}[Linear Combination]
+	A \textit{linear combination} of a list $v_1, \dots, v_m$ of vectors in $V$ is a vector of the form
+	\[
+	a_1v_1 + \cdots + a_mv_m,
+	\]
+	where $a_1, \dots, a_m \in \F$.
+\end{definition}
+\begin{definition}[Span]
+	The set of all linear combinations of a list of vectors $v_1, \dots, v_m$ in $V$ is called the \textit{span} of $v_1, \dots, v_m$, denoted by $\text{span}(v_1, \dots, v_m)$. In other words,
+	\[
+	\text{span}(v_1, \dots, v_m) = \{a_1v_1 + \cdots + a_mv_m : a_1, \dots, a_m \in \F\}.
+	\]
+	The span of the empty list $( \, )$ is defined to be $\{0\}$.
+\end{definition}
+\begin{theorem}
+	The span of a list of vectors in $\V$ is the smallest subspace of $\V$ containing all vectors in the list.
+\end{theorem}
+\begin{proof}
+	Suppose $v_1, \dots, v_m$ is a list of vectors in $\V$.
+	
+	First we show that $\text{span}(v_1, \dots, v_m)$ is a subspace of $V$. The additive identity is in $\text{span}(v_1, \dots, v_m)$ because
+	\[
+	0 = 0v_1 + \cdots + 0v_m.
+	\]
+	Also, $\text{span}(v_1, \dots, v_m)$ is closed under addition because
+	\[
+	(a_1v_1 + \cdots + a_mv_m) + (c_1v_1 + \cdots + c_mv_m) = (a_1 + c_1)v_1 + \cdots + (a_m + c_m)v_m.
+	\]
+	Furthermore, $\text{span}(v_1, \dots, v_m)$ is closed under scalar multiplication because
+	\[
+	\lambda(a_1v_1 + \cdots + a_mv_m) = \lambda a_1v_1 + \cdots + \lambda a_mv_m.
+	\]
+	Thus $\text{span}(v_1, \dots, v_m)$ is a subspace of $\V$.
+	
+	Each $v_k$ is a linear combination of $v_1, \dots, v_m$ (to show this, set $a_k = 1$ and let the other $a$'s in equal 0). Thus $\text{span}(v_1, \dots, v_m)$ contains each $v_k$. Conversely, because subspaces are closed under scalar multiplication and addition, every subspace of $\V$ that contains each $v_k$ contains $\text{span}(v_1, \dots, v_m)$. Thus $\text{span}(v_1, \dots, v_m)$ is the smallest subspace of $\V$ containing all the vectors $v_1, \dots, v_m$.
+\end{proof}
+\begin{definition}
+	A vector space is called \textit{finite-dimensional} if some list of vectors in it spans the space.
+\end{definition}
+\begin{definition}[Polynomial] \mbox{}
+	\begin{itemize}
+		\item A function $p: \F \to \F$ is called a \textit{polynomial} with coefficients in $\F$ if there exist $a_0, \dots, a_m \in \F$ such that
+		\[
+		p(z) = a_0 + a_1z + a_2z^2 + \cdots + a_mz^m
+		\]
+		for all $z \in \F$.
+		\item $\mathcal{P}(\F)$ is the set of all polynomials with coefficients in $\F$.
+	\end{itemize}
+\end{definition}
+\begin{definition}[Degree of a Polynomial] \mbox{}
+	\begin{itemize}
+		\item A polynomial $p \in \mathcal{P}(\F)$ is said to have \textit{degree} $m$ if there exist scalars $a_0, a_1, \dots, a_m \in \F$ with $a_m \neq 0$ such that for every $z \in \F$, we have
+		\[
+		p(z) = a_0 + a_1z + \cdots + a_mz^m.
+		\]
+		\item The polynomial that is identically $0$ is said to have degree $-\infty$. 
+		\item The degree of a polynomial $p$ is denoted by $\deg p$.
+	\end{itemize}
+\end{definition}
+\subsubsection{Linear Independence}
+\begin{definition}[Linearly Independent] \mbox{}
+	\begin{itemize}
+		\item A list $v_1, \dots, v_m$ of vectors in $\V$ is called \textit{linearly independent} if the only choice of $a_1, \dots, a_m \in \F$ that makes
+		\[
+		a_1 v_1 + \dots + a_m v_m = 0
+		\]
+		is $a_1 = \dots = a_m = 0$.
+		
+		\item The empty list $( \ )$ is also declared to be linearly independent.
+	\end{itemize}
+\end{definition}
+\begin{definition}[Linearly Dependent] \mbox{}
+	\begin{itemize}
+		\item A list of vectors in $\V$ is called \textit{linearly dependent} if it is not linearly independent.
+		
+		\item In other words, a list $v_1, \dots, v_m$ of vectors in $\V$ is linearly dependent if there exist $a_1, \dots, a_m \in \F$, not all $0$, such that $a_1 v_1 + \dots + a_m v_m = 0$.
+	\end{itemize}
+\end{definition}
+\begin{theorem}
+	Suppose $v_1, \dots, v_m$ is a linearly dependent list in $\V$. Then there exists $k \in \{1, 2, \dots, m\}$ such that
+	\[
+	v_k \in \text{span}(v_1, \dots, v_{k-1}).
+	\]
+	Furthermore, if $k$ satisfies the condition above and the $k^{\text{th}}$ term is removed from $v_1, \dots, v_m$, then the span of the remaining list equals $\text{span}(v_1, \dots, v_m)$.
+\end{theorem}
+\begin{proof}
+	Because the list $v_1, \dots, v_m$ is linearly dependent, there exist numbers $a_1, \dots, a_m \in \F$, not all $0$, such that
+	\[
+	a_1 v_1 + \dots + a_m v_m = 0.
+	\]
+	Let $k$ be the largest element of $\{1, \dots, m\}$ such that $a_k \neq 0$. Then
+	\[
+	v_k = -\frac{a_1}{a_k} v_1 - \dots - \frac{a_{k-1}}{a_k} v_{k-1},
+	\]
+	which proves that $v_k \in \text{span}(v_1, \dots, v_{k-1})$, as desired.
+	
+	Now suppose $k$ is any element of $\{1, \dots, m\}$ such that $v_k \in \text{span}(v_1, \dots, v_{k-1})$. Let $b_1, \dots, b_{k-1} \in \F$ be such that
+	\[v_k = b_1 v_1 + \dots + b_{k-1} v_{k-1}.
+	\]
+	Suppose $u \in \text{span}(v_1, \dots, v_m)$. Then there exist $c_1, \dots, c_m \in \F$ such that
+	\[
+	u = c_1 v_1 + \dots + c_m v_m.
+	\]
+	In the equation above, we can replace $v_k$ with the right side of, which shows that $u$ is in the span of the list obtained by removing the $k^{\text{th}}$ term from $v_1, \dots, v_m$. Thus removing the $k^{\text{th}}$ term of the list $v_1, \dots, v_m$ does not change the span of the list.
+\begin{tcolorbox}[colback=yellow!20, colframe=yellow!80!black, title=My thoughts]
+	Can we really order vectors like this?
+\end{tcolorbox}
+\end{proof}
+\begin{theorem}
+	In a finite-dimensional vector space, the length of every linearly independent list of vectors is less than or equal to the length of every spanning list of vectors.
+\end{theorem}
+\begin{proof}
+	Suppose that $u_1, \dots, u_m$ is linearly independent in $\V$. Suppose also that $w_1, \dots, w_n$ spans $\V$. We need to prove that $m \le n$. We do so through the process described below with $m$ steps; note that in each step we add one of the $u$'s and remove one of the $w$'s.
+	
+	\noindent \textbf{Step 1} \\
+	Let $B$ be the list $w_1, \dots, w_n$, which spans $\V$. Adjoining $u_1$ at the beginning of this list produces a linearly dependent list (because $u_1$ can be written as a linear combination of $w_1, \dots, w_n$). In other words, the list
+	\[
+	u_1, w_1, \dots, w_n
+	\]
+	is linearly dependent.
+	
+	Thus by the linear dependence lemma, one of the vectors in the list above is a linear combination of the previous vectors in the list. We know that $u_1 \neq 0$ because the list $u_1, \dots, u_m$ is linearly independent. Thus $u_1$ is not in the span of the previous vectors in the list above (because $u_1$ is not in $\{0\}$, which is the span of the empty list). Hence the linear dependence lemma implies that we can remove one of the $w$'s so that the new list $B$ (of length $n$) consisting of $u_1$ and the remaining $w$'s spans $\V$.
+	
+	\noindent \textbf{Step $k$, for $k = 2, \dots, m$} \\
+	The list $B$ (of length $n$) from step $k - 1$ spans $\V$. In particular, $u_k$ is in the span of the list $B$. Thus the list of length $(n + 1)$ obtained by adjoining $u_k$ to $B$, placing it just after $u_1, \dots, u_{k-1}$, is linearly dependent. By the linear dependence lemma (2.19), one of the vectors in this list is in the span of the previous ones, and because $u_1, \dots, u_k$ is linearly independent, this vector cannot be one of the $u$'s.
+	
+	Hence there still must be at least one remaining $w$ at this step. We can remove from our new list (after adjoining $u_k$ in the proper place) a $w$ that is a linear combination of the previous vectors in the list, so that the new list $B$ (of length $n$) consisting of $u_1, \dots, u_k$ and the remaining $w$'s spans $\V$.
+	
+	After step $m$, we have added all the $u$'s and the process stops. At each step as we add a $u$ to $B$, the linear dependence lemma implies that there is some $w$ to remove. Thus there are at least as many $w$'s as $u$'s.
+\end{proof}
+\begin{theorem}
+	Every subspace of a finite-dimensional vector space is finite-dimensional.
+\end{theorem}
+\begin{proof}
+	Suppose $\V$ is finite-dimensional and $U$ is a subspace of $\V$. We need to prove that $U$ is finite-dimensional. We do this through the following multistep construction.
+	
+	\noindent \textbf{Step 1} \\
+	If $U = \{0\}$, then $U$ is finite-dimensional and we are done. If $U \neq \{0\}$, then choose a nonzero vector $u_1 \in U$.
+	
+	\noindent \textbf{Step $k$} \\
+	If $U = \text{span}(u_1, \dots, u_{k-1})$, then $U$ is finite-dimensional and we are done. If $U \neq \text{span}(u_1, \dots, u_{k-1})$, then choose a vector $u_k \in U$ such that
+	\[
+	u_k \notin \text{span}(u_1, \dots, u_{k-1}).
+	\]
+	
+	After each step, as long as the process continues, we have constructed a list of vectors such that no vector in this list is in the span of the previous vectors. Thus after each step we have constructed a linearly independent list, by the linear dependence lemma. This linearly independent list cannot be longer than any spanning list of $\V$. Thus the process eventually terminates, which means that $U$ is finite-dimensional.
+\end{proof}
+\subsubsection{Exercise 2A}
+\setcounterpageref{question}{0}
+\begin{question}
+	Find a list of four distinct vectors in $\F^3$ whose span equals
+	\[
+	\{(x, y, z) \in \F^3 : x + y + z = 0\}.
+	\]
+\end{question}
+\begin{proof}
+	Let $U = \{(x, y, z) \in \F^3 : x + y + z = 0\}$. Notice that any vector $(x, y, z)$ in $U$ must satisfy $z = -x - y$. Therefore, we can express any vector in $U$ as:
+	\[
+	(x, y, -x-y) = x(1, 0, -1) + y(0, 1, -1)
+	\]
+	This implies that the list of two vectors $(1, 0, -1)$ and $(0, 1, -1)$ spans $U$. 
+	
+	To obtain a list of four distinct vectors that span $U$, we can simply include these two vectors and add any two other distinct vectors that also lie in $U$. We can generate other vectors in $U$ by choosing arbitrary values for $x$ and $y$ and setting $z = -x - y$:
+	\begin{itemize}
+		\item Let $x=1, y=0 \implies v_1 = (1, 0, -1)$
+		\item Let $x=0, y=1 \implies v_2 = (0, 1, -1)$
+		\item Let $x=1, y=1 \implies v_3 = (1, 1, -2)$
+		\item Let $x=-1, y=0 \implies v_4 = (-1, 0, 1)$
+	\end{itemize}
+	
+	Since $v_1$ and $v_2$ are in our list, the span of $(v_1, v_2, v_3, v_4)$ contains all linear combinations of $v_1$ and $v_2$, which means it contains all of $U$. Furthermore, since $v_3, v_4 \in U$, their inclusion does not expand the span beyond $U$. 
+	
+	Thus, the span of the list is exactly $U$, and a valid list of four distinct vectors is:
+	\[
+	(1, 0, -1), \ (0, 1, -1), \ (1, 1, -2), \ (-1, 0, 1)
+	\]
+\end{proof}
+\begin{question}
+	Prove or give a counterexample: If $v_1, v_2, v_3, v_4$ spans $\V$, then the list
+	\[
+	v_1 - v_2, v_2 - v_3, v_3 - v_4, v_4
+	\]
+	also spans $\V$.
+\end{question}
+\begin{proof}
+	The statement is true. 
+	
+	\textbf{Proof:}
+	Let $u \in \V$. Since the list $v_1, v_2, v_3, v_4$ spans $\V$, there exist scalars $a_1, a_2, a_3, a_4 \in \F$ such that:
+	\[
+	u = a_1 v_1 + a_2 v_2 + a_3 v_3 + a_4 v_4
+	\]
+	We must show that $u$ can be expressed as a linear combination of the vectors in the new list: $v_1 - v_2, v_2 - v_3, v_3 - v_4, v_4$. 
+	
+	Notice that we can rewrite each of the original vectors in terms of the new vectors by using telescoping sums:
+	\begin{align*}
+		v_4 &= v_4 \\
+		v_3 &= (v_3 - v_4) + v_4 \\
+		v_2 &= (v_2 - v_3) + (v_3 - v_4) + v_4 \\
+		v_1 &= (v_1 - v_2) + (v_2 - v_3) + (v_3 - v_4) + v_4
+	\end{align*}
+	
+	Substitute these expressions back into the original equation for $u$:
+	\begin{align*}
+		u &= a_1\big((v_1 - v_2) + (v_2 - v_3) + (v_3 - v_4) + v_4\big) \\
+		&\quad + a_2\big((v_2 - v_3) + (v_3 - v_4) + v_4\big) \\
+		&\quad + a_3\big((v_3 - v_4) + v_4\big) \\
+		&\quad + a_4v_4
+	\end{align*}
+	
+	Distributing the scalars and factoring out the new vectors yields:
+	\[
+	u = a_1(v_1 - v_2) + (a_1 + a_2)(v_2 - v_3) + (a_1 + a_2 + a_3)(v_3 - v_4) + (a_1 + a_2 + a_3 + a_4)v_4
+	\]
+	
+	Because the field of scalars $\F$ is closed under addition, the coefficients $a_1$, $(a_1 + a_2)$, $(a_1 + a_2 + a_3)$, and $(a_1 + a_2 + a_3 + a_4)$ are all valid scalars in $\F$. 
+	
+	Thus, any arbitrary vector $u \in \V$ can be written as a linear combination of $v_1 - v_2, v_2 - v_3, v_3 - v_4, v_4$, meaning this list also spans $\V$.
+\end{proof}
+\begin{question}
+	Suppose $v_1, \dots, v_m$ is a list of vectors in $\V$. For $k \in \{1, \dots, m\}$, let
+	\[
+	w_k = v_1 + \dots + v_k.
+	\]
+	Show that $\operatorname{span}(v_1, \dots, v_m) = \operatorname{span}(w_1, \dots, w_m)$.
+\end{question}
+\begin{proof}
+	To show that $\operatorname{span}(v_1, \dots, v_m) = \operatorname{span}(w_1, \dots, w_m)$, we must prove that each set is a subset of the other.
+	
+	\textbf{Part 1: $\operatorname{span}(w_1, \dots, w_m) \subseteq \operatorname{span}(v_1, \dots, v_m)$}
+	
+	By definition, for each $k \in \{1, \dots, m\}$, the vector $w_k$ is given by:
+	\[
+	w_k = v_1 + \dots + v_k
+	\]
+	This shows that every $w_k$ is a linear combination of the vectors in the list $v_1, \dots, v_m$. Since every $w_k \in \operatorname{span}(v_1, \dots, v_m)$, and the span is a vector space closed under addition and scalar multiplication, any linear combination of $w_1, \dots, w_m$ must also belong to $\operatorname{span}(v_1, \dots, v_m)$. Therefore, 
+	\[
+	\operatorname{span}(w_1, \dots, w_m) \subseteq \operatorname{span}(v_1, \dots, v_m).
+	\]
+	
+	\textbf{Part 2: $\operatorname{span}(v_1, \dots, v_m) \subseteq \operatorname{span}(w_1, \dots, w_m)$}
+	
+	We can express each vector $v_k$ as a linear combination of the $w$ vectors. For $k = 1$, we clearly have:
+	\[
+	v_1 = w_1
+	\]
+	For any $k \in \{2, \dots, m\}$, we can isolate $v_k$ by subtracting consecutive $w$ vectors:
+	\begin{align*}
+		w_k - w_{k-1} &= (v_1 + \dots + v_{k-1} + v_k) - (v_1 + \dots + v_{k-1}) \\
+		&= v_k
+	\end{align*}
+	This demonstrates that every $v_k$ can be written as a linear combination of $w_1, \dots, w_m$ (specifically, $w_k - w_{k-1}$). Since every $v_k \in \operatorname{span}(w_1, \dots, w_m)$, it follows that any linear combination of $v_1, \dots, v_m$ is also in $\operatorname{span}(w_1, \dots, w_m)$. Therefore,
+	\[
+	\operatorname{span}(v_1, \dots, v_m) \subseteq \operatorname{span}(w_1, \dots, w_m).
+	\]
+	
+	 $\operatorname{span}(w_1, \dots, w_m) \subseteq \operatorname{span}(v_1, \dots, v_m)$ and $\operatorname{span}(v_1, \dots, v_m) \subseteq \operatorname{span}(w_1, \dots, w_m)$, the two sets must be equal.
+\end{proof}
+\begin{question} \mbox{}
+	\begin{enumerate}
+	\item[(a)] Show that a list of length one in a vector space is linearly independent if and only if the vector in the list is not $0$.
+	\item[(b)] Show that a list of length two in a vector space is linearly independent if and only if neither of the two vectors in the list is a scalar multiple of the other.
+	\end{enumerate}
+\end{question}
+\begin{proof} \mbox{}\\
+	\textbf{Part (a)} \mbox{} \\
+	($\implies$) Suppose the list containing only $v$ is linearly independent. By definition of linear independence, the equation $av = 0$ implies $a = 0$ for $a \in \F$. If $v$ were equal to the zero vector ($v = 0$), then any non-zero scalar $a \in \F$ (such as $a = 1$) would satisfy $1 \cdot 0 = 0$. This would mean a non-trivial linear combination equals zero, making the list linearly dependent. This is a contradiction. Therefore, $v \neq 0$.
+	
+	($\impliedby$) Suppose $v \neq 0$. Let $a \in \F$ be a scalar such that $av = 0$. Since $v$ is not the zero vector, it must be that $a = 0$ (otherwise, we could multiply both sides by the multiplicative inverse $1/a$ to get $v = (1/a)0 = 0$, contradicting $v \neq 0$). Since $a = 0$ is the only solution to $av = 0$, the list of length one is linearly independent.
+	
+	\vspace{1em}
+	
+	\textbf{Part (b)}
+	
+	Let $v_1, v_2$ be a list of length two in a vector space $V$. 
+	
+	($\implies$) Suppose the list $v_1, v_2$ is linearly independent. We must show that neither vector is a scalar multiple of the other. Assume, for the sake of contradiction, that one is a scalar multiple of the other. 
+	If $v_1 = c v_2$ for some scalar $c \in \F$, then we can write:
+	\[
+	1 v_1 - c v_2 = 0
+	\]
+	Since the coefficient of $v_1$ is $1 \neq 0$, this is a non-trivial linear combination that equals $0$, which contradicts the assumption of linear independence. 
+	Similarly, if $v_2 = c v_1$, then $-c v_1 + 1 v_2 = 0$, which again contradicts linear independence since the coefficient of $v_2$ is $1 \neq 0$. Thus, neither vector can be a scalar multiple of the other.
+	
+	($\impliedby$) Suppose neither vector is a scalar multiple of the other. We must show that the list $v_1, v_2$ is linearly independent. Suppose there exist scalars $a_1, a_2 \in \F$ such that:
+	\[
+	a_1 v_1 + a_2 v_2 = 0
+	\]
+	If $a_1 \neq 0$, we can rearrange the equation and divide by $a_1$ to isolate $v_1$:
+	\[
+	v_1 = -\frac{a_2}{a_1} v_2
+	\]
+	This implies that $v_1$ is a scalar multiple of $v_2$, which contradicts our initial assumption. Therefore, we must have $a_1 = 0$. 
+	
+	Substituting $a_1 = 0$ into the original equation gives:
+	\[
+	a_2 v_2 = 0
+	\]
+	If $a_2 \neq 0$, then $v_2 = 0$. However, if $v_2 = 0$, then $v_2 = 0 v_1$, which means $v_2$ is a scalar multiple of $v_1$, again contradicting our assumption. Therefore, $a_2$ must also be $0$. 
+	
+	Since the only solution is $a_1 = 0$ and $a_2 = 0$, the list $v_1, v_2$ is linearly independent.
+\end{proof}
+\begin{question}
+	Find a number $t$ such that
+	\[
+	(3, 1, 4), (2, -3, 5), (5, 9, t)
+	\]
+	is not linearly independent in $\R^3$.
+\end{question}
+\begin{proof}
+	We can set up the equation:
+	\[
+	(5, 9, t) = a(3, 1, 4) + b(2, -3, 5)
+	\]
+	This yields a system of three linear equations:
+	\begin{align}
+		3a + 2b &= 5 \\
+		a - 3b &= 9 \\
+		4a + 5b &= t
+	\end{align}
+	Thus, the number is $t = 2$.
+\end{proof}
+\begin{question}
+	Show that the list $(2, 3, 1), (1, -1, 2), (7, 3, c)$ is linearly dependent in $\F^3$ if and only if $c = 8$.
+\end{question}
+\begin{proof}
+	For the list of three vectors to be linearly dependent, the third vector must be a linear combination of the first two. 
+	
+	This means we can set up the equation:
+	\[
+	a(2, 3, 1) + b(1, -1, 2) = (7, 3, c)
+	\]
+	This produces a system of three linear equations:
+	\begin{align}
+		2a + b &= 7 \\
+		3a - b &= 3 \\
+		a + 2b &= c
+	\end{align}
+	
+	We can solve for $a$ and $b$ using the first two equations. Adding equation (1) and equation (2) together yields:
+	\begin{align*}
+		a &= 2
+		b &= 3
+		c &= 8
+	\end{align*}
+	
+	Because the system is only consistent when $c = 8$, the third vector is a linear combination of the first two if and only if $c = 8$. Thus, the list is linearly dependent if and only if $c = 8$.
+\end{proof}
+\begin{question} \mbox{}\\
+	\begin{enumerate} 
+		\item[(a)] Show that if we think of $\C$ as a vector space over $\R$, then the list $1 + i, 1 - i$ is linearly independent.
+		\item[(b)] Show that if we think of $\C$ as a vector space over $\C$, then the list $1 + i, 1 - i$ is linearly dependent.
+	\end{enumerate}
+\end{question}
+\begin{proof}
+	\textbf{Part (a)}
+	We must show that the only real scalars $a, b \in \R$ that satisfy the equation
+	\[
+	a(1 + i) + b(1 - i) = 0
+	\]
+	are $a = 0$ and $b = 0$. 
+	
+	Expanding the equation, we get:
+	\[
+	a + ai + b - bi = 0
+	\]
+	Grouping the real and imaginary parts gives:
+	\[
+	(a + b) + (a - b)i = 0
+	\]
+	For a complex number to equal zero, both its real and imaginary parts must be zero. This yields the system of linear equations:
+	\begin{align*}
+		a + b &= 0 \\
+		a - b &= 0
+	\end{align*}
+	Which implies $a = 0$ and $b = 0$. 
+	
+	Since the only solution is $a = 0$ and $b = 0$, the list $1 + i, 1 - i$ is linearly independent over $\R$.
+	
+	\vspace{1em}
+	
+	\textbf{Part (b)}
+	
+	Now suppose $\C$ is a vector space over $\C$.
+	
+	This allows us to write:
+	\[
+	1(1 + i) - i(1 - i) = 0
+	\]
+	Here, our chosen scalars are $c_1 = 1$ and $c_2 = -i$. Because $c_1 \neq 0$ (and $c_2 \neq 0$), we have a non-trivial linear combination that equals zero. 
+	
+	Therefore, the list $1 + i, 1 - i$ is linearly dependent over $\C$. 
+\end{proof}
+\begin{question}
+	Suppose $v_1, v_2, v_3, v_4$ is linearly independent in $\V$. Prove that the list
+	\[
+	v_1 - v_2, v_2 - v_3, v_3 - v_4, v_4
+	\]
+	is also linearly independent.
+\end{question}
+\begin{proof}
+	To prove that the list $v_1 - v_2, v_2 - v_3, v_3 - v_4, v_4$ is linearly independent, suppose there exist scalars $a_1, a_2, a_3, a_4 \in \F$ such that:
+	\[
+	a_1(v_1 - v_2) + a_2(v_2 - v_3) + a_3(v_3 - v_4) + a_4v_4 = 0
+	\]
+	
+	Expanding the terms and regrouping by the vectors $v_1, v_2, v_3, v_4$ gives:
+	\begin{align*}
+		a_1v_1 - a_1v_2 + a_2v_2 - a_2v_3 + a_3v_3 - a_3v_4 + a_4v_4 &= 0 \\
+		a_1v_1 + (a_2 - a_1)v_2 + (a_3 - a_2)v_3 + (a_4 - a_3)v_4 &= 0
+	\end{align*}
+	
+	We are given that the list $v_1, v_2, v_3, v_4$ is linearly independent. By the definition of linear independence, the only solution to this equation is when all coefficients are equal to zero. This gives us the following system of equations:
+	\begin{align*}
+		a_1 &= 0 \\
+		a_2 - a_1 &= 0 \\
+		a_3 - a_2 &= 0 \\
+		a_4 - a_3 &= 0
+	\end{align*}
+	Because the only solution to the linear combination is the trivial solution $a_1 = a_2 = a_3 = a_4 = 0$, the list $v_1 - v_2, v_2 - v_3, v_3 - v_4, v_4$ is also linearly independent.
+\end{proof}
+\begin{question}
+	Prove or give a counterexample: If $v_1, v_2, \dots, v_m$ is a linearly independent list of vectors in $\V$, then
+	\[
+	5v_1 - 4v_2, v_2, v_3, \dots, v_m
+	\]
+	is linearly independent.
+\end{question}
+\begin{proof}
+	The statement is true.
+	
+	Suppose there exist scalars $a_1, a_2, \dots, a_m \in \F$ such that:
+	\[
+	a_1(5v_1 - 4v_2) + a_2v_2 + a_3v_3 + \dots + a_mv_m = 0
+	\]
+	
+	Expanding the terms and regrouping by the vectors $v_1, v_2, \dots, v_m$ gives:
+	\begin{align*}
+		5a_1v_1 - 4a_1v_2 + a_2v_2 + a_3v_3 + \dots + a_mv_m &= 0 \\
+		5a_1v_1 + (a_2 - 4a_1)v_2 + a_3v_3 + \dots + a_mv_m &= 0
+	\end{align*}
+	
+	Because we are given that the list $v_1, v_2, \dots, v_m$ is linearly independent, the coefficients of each vector in this linear combination must be exactly zero. This produces the following system of equations:
+	\begin{align*}
+		5a_1 &= 0 \\
+		a_2 - 4a_1 &= 0 \\
+		a_3 &= 0 \\
+		&\vdots \\
+		a_m &= 0
+	\end{align*}
+	
+	From the first equation, dividing by $5$ yields $a_1 = 0$. 
+	Substituting $a_1 = 0$ into the second equation yields $a_2 - 4(0) = 0$, which gives $a_2 = 0$. 
+	The remaining equations directly state that $a_3 = 0, \dots, a_m = 0$.
+	
+	Since the only solution is the trivial solution $a_1 = a_2 = \dots = a_m = 0$, the list $5v_1 - 4v_2, v_2, v_3, \dots, v_m$ is linearly independent.
+\end{proof}
+\begin{question}
+	Prove or give a counterexample: If $v_1, v_2, \dots, v_m$ is a linearly independent list of vectors in $\V$ and $\lambda \in \F$ with $\lambda \neq 0$, then $\lambda v_1, \lambda v_2, \dots, \lambda v_m$ is linearly independent.
+\end{question}
+\begin{proof}
+	The statement is true.
+	
+	Suppose there exist scalars $a_1, a_2, \dots, a_m \in \F$ such that:
+	\[
+	a_1(\lambda v_1) + a_2(\lambda v_2) + \dots + a_m(\lambda v_m) = 0
+	\]
+	
+	Using the associativity of scalar multiplication in a vector space, we can rewrite this equation as:
+	\[
+	(\lambda a_1)v_1 + (\lambda a_2)v_2 + \dots + (\lambda a_m)v_m = 0
+	\]
+	
+	We are given that the list $v_1, v_2, \dots, v_m$ is linearly independent. By the definition of linear independence, the scalar coefficients of the vectors in this linear combination must all equal zero. This gives:
+	\[
+	\lambda a_1 = 0, \quad \lambda a_2 = 0, \quad \dots, \quad \lambda a_m = 0
+	\]
+	
+	We are also given that $\lambda \neq 0$. Because $\lambda$ is a non-zero element of the field $\mathbf{F}$, it has a multiplicative inverse, $\lambda^{-1}$. Multiplying both sides of each equation by $\lambda^{-1}$ yields:
+	\[
+	a_1 = 0, \quad a_2 = 0, \quad \dots, \quad a_m = 0
+	\]
+	
+	Because the only scalars that satisfy the initial equation are $a_1 = a_2 = \dots = a_m = 0$, the list $\lambda v_1, \lambda v_2, \dots, \lambda v_m$ is linearly independent. 
+\end{proof}
