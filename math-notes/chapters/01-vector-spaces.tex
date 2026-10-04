@@ -984,3 +984,21 @@ subspace of $V$ containing $\V_1, \dots , \V_m.$
 	
 	Since $V_e \cap V_o = \{0\}$ and $V_e + V_o = \R^{\R}$, we conclude that $\R^{\R} = V_e \oplus V_o$.
 \end{proof}
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=Extra Stuff]
+	\begin{itemize}
+		\item \textbf{Why is it called Linear Algebra?:} 
+		\begin{itemize}
+			\item \textbf{Linear:} Geometrically, this describes the act of "squishing" or projecting a higher-dimensional space into a lower-dimensional one. Essentially, you can map data from a higher dimensional space to a lower dimensional space, eventually to a linear space. This is the study of how this goal can be achieved.
+			\item \textbf{Algebra:} A vector space over a field can be called an algebra if you define vector multiplication on it.
+		\end{itemize}
+		\item \textbf{What some other less intuitive fields?:} If you take the integers modulo a prime—like modulo 3, modulo 5, or modulo 7—they form a perfectly valid finite field. If the number you modulo by is not prime (like modulo 4 or 6), it fails to be a field because you get "zero divisors" (e.g., $2 \times 3 = 6 \equiv 0 \pmod 6$, meaning you can't divide by 2 or 3).
+		\item \textbf{Which came first, linear independence or direct sum?:}
+		Logically it does not matter which comes first because they are the exact same concept applied to two different objects. Linear independence is a property of individual vectors, while a direct sum is a property of entire subspaces.
+		\item
+		\textbf{Prove that $U_1 \cap (U_2 + U_3) = \{0\}$, $U_2 \cap (U_1 + U_3) = \{0\}$, and $U_3 \cap (U_1 + U_2) = \{0\}$ is a necessary and sufficient condition for $U_1 + U_2 + U_3$ to be a direct sum:}. 
+		
+		\textbf{Necessity (Forward):} Assume $U_1 + U_2 + U_3$ is a direct sum. Let $v \in U_1 \cap (U_2 + U_3)$. Because $v \in U_1$, we can write it as $v = u_1$ for some $u_1 \in U_1$. Because $v \in U_2 + U_3$, we can also write it as $v = u_2 + u_3$ for some $u_2 \in U_2$ and $u_3 \in U_3$. Equating these expressions gives $u_1 = u_2 + u_3$, which rearranges to $u_1 - u_2 - u_3 = 0$. By the definition of a direct sum, the only way to sum to the zero vector is if each individual component from each subspace is zero. Therefore, $u_1 = 0$, meaning $v = 0$. This proves $U_1 \cap (U_2 + U_3) = \{0\}$. By symmetry, the exact same logic dictates that the other two intersections must also be $\{0\}$.
+		
+		\textbf{Sufficiency (Backward):} Assume the three intersection conditions hold, and suppose we have a sum $u_1 + u_2 + u_3 = 0$. We can algebraically rearrange this to $u_1 = -(u_2 + u_3)$. This shows that $u_1$ is an element of $U_1$, but it is also equal to an element in $U_2 + U_3$. Therefore, $u_1 \in U_1 \cap (U_2 + U_3)$. By our assumed condition, this intersection contains only $\{0\}$, which strictly forces $u_1 = 0$. Substituting $u_1 = 0$ back into our original equation leaves $u_2 + u_3 = 0$, or $u_2 = -u_3$. This means $u_2 \in U_2 \cap U_3$. Since $U_2 \cap U_3$ is a subset of $U_2 \cap (U_1 + U_3)$, which we assumed is $\{0\}$, $u_2$ must also be $0$. Finally, substituting $u_2 = 0$ forces $u_3 = 0$. Because $u_1 = 0, u_2 = 0,$ and $u_3 = 0$ is the only solution to $u_1 + u_2 + u_3 = 0$, the sum is proven to be direct.
+	\end{itemize}
+\end{tcolorbox}

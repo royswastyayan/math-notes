@@ -80,7 +80,7 @@
 		\item In other words, a list $v_1, \dots, v_m$ of vectors in $\V$ is linearly dependent if there exist $a_1, \dots, a_m \in \F$, not all $0$, such that $a_1 v_1 + \dots + a_m v_m = 0$.
 	\end{itemize}
 \end{definition}
-\begin{theorem}
+\begin{theorem}[Linear Dependence Lemma]
 	Suppose $v_1, \dots, v_m$ is a linearly dependent list in $\V$. Then there exists $k \in \{1, 2, \dots, m\}$ such that
 	\[
 	v_k \in \text{span}(v_1, \dots, v_{k-1}).
@@ -99,16 +99,14 @@
 	which proves that $v_k \in \text{span}(v_1, \dots, v_{k-1})$, as desired.
 	
 	Now suppose $k$ is any element of $\{1, \dots, m\}$ such that $v_k \in \text{span}(v_1, \dots, v_{k-1})$. Let $b_1, \dots, b_{k-1} \in \F$ be such that
-	\[v_k = b_1 v_1 + \dots + b_{k-1} v_{k-1}.
-	\]
+	\begin{equation} \label{eq:1}
+		v_k = b_1 v_1 + \dots + b_{k-1} v_{k-1}.
+	\end{equation}
 	Suppose $u \in \text{span}(v_1, \dots, v_m)$. Then there exist $c_1, \dots, c_m \in \F$ such that
 	\[
 	u = c_1 v_1 + \dots + c_m v_m.
 	\]
-	In the equation above, we can replace $v_k$ with the right side of, which shows that $u$ is in the span of the list obtained by removing the $k^{\text{th}}$ term from $v_1, \dots, v_m$. Thus removing the $k^{\text{th}}$ term of the list $v_1, \dots, v_m$ does not change the span of the list.
-\begin{tcolorbox}[colback=yellow!20, colframe=yellow!80!black, title=My thoughts]
-	Can we really order vectors like this?
-\end{tcolorbox}
+	In the equation above, we can replace $v_k$ with the right side of \eqref{eq:1}, which shows that $u$ is in the span of the list obtained by removing the $k^{\text{th}}$ term from $v_1, \dots, v_m$. Thus removing the $k^{\text{th}}$ term of the list $v_1, \dots, v_m$ does not change the span of the list.
 \end{proof}
 \begin{theorem}
 	In a finite-dimensional vector space, the length of every linearly independent list of vectors is less than or equal to the length of every spanning list of vectors.
@@ -126,7 +124,7 @@
 	Thus by the linear dependence lemma, one of the vectors in the list above is a linear combination of the previous vectors in the list. We know that $u_1 \neq 0$ because the list $u_1, \dots, u_m$ is linearly independent. Thus $u_1$ is not in the span of the previous vectors in the list above (because $u_1$ is not in $\{0\}$, which is the span of the empty list). Hence the linear dependence lemma implies that we can remove one of the $w$'s so that the new list $B$ (of length $n$) consisting of $u_1$ and the remaining $w$'s spans $\V$.
 	
 	\noindent \textbf{Step $k$, for $k = 2, \dots, m$} \\
-	The list $B$ (of length $n$) from step $k - 1$ spans $\V$. In particular, $u_k$ is in the span of the list $B$. Thus the list of length $(n + 1)$ obtained by adjoining $u_k$ to $B$, placing it just after $u_1, \dots, u_{k-1}$, is linearly dependent. By the linear dependence lemma (2.19), one of the vectors in this list is in the span of the previous ones, and because $u_1, \dots, u_k$ is linearly independent, this vector cannot be one of the $u$'s.
+	The list $B$ (of length $n$) from step $k - 1$ spans $\V$. In particular, $u_k$ is in the span of the list $B$. Thus the list of length $(n + 1)$ obtained by adjoining $u_k$ to $B$, placing it just after $u_1, \dots, u_{k-1}$, is linearly dependent. By the linear dependence lemma (2.9), one of the vectors in this list is in the span of the previous ones, and because $u_1, \dots, u_k$ is linearly independent, this vector cannot be one of the $u$'s.
 	
 	Hence there still must be at least one remaining $w$ at this step. We can remove from our new list (after adjoining $u_k$ in the proper place) a $w$ that is a linear combination of the previous vectors in the list, so that the new list $B$ (of length $n$) consisting of $u_1, \dots, u_k$ and the remaining $w$'s spans $\V$.
 	
@@ -485,5 +483,226 @@
 	a_1 = 0, \quad a_2 = 0, \quad \dots, \quad a_m = 0
 	\]
 	
-	Because the only scalars that satisfy the initial equation are $a_1 = a_2 = \dots = a_m = 0$, the list $\lambda v_1, \lambda v_2, \dots, \lambda v_m$ is linearly independent. 
+	Because the only scalars that satisfy the initial equation are $a_1 = a_2 = \dots = a_m = 0$, the list $\lambda v_1, \lambda v_2, \dots, \lambda v_m$ is linearly independent.
+\end{proof}
+\begin{question}
+	Prove or give a counterexample: If $v_1, \dots, v_m$ and $w_1, \dots, w_m$ are linearly independent lists of vectors in $\V$, then the list $v_1 + w_1, \dots, v_m + w_m$ is linearly independent.
+\end{question}
+\begin{proof}
+		The statement is false. 
+	
+	Define $w_i = -v_i$ for each $i = 1, \dots, m$.
+	
+	First, we verify that $w_1, \dots, w_m$ is linearly independent. Suppose $a_1, \dots, a_m \in \mathbb{F}$ are scalars such that:
+	\[
+	a_1 w_1 + \dots + a_m w_m = 0
+	\]
+	Substituting $w_i = -v_i$, we obtain:
+	\[
+	-a_1 v_1 - \dots - a_m v_m = 0
+	\]
+	Since $v_1, \dots, v_m$ is linearly independent, all coefficients must be zero: $-a_1 = 0, \dots, -a_m = 0$, which means $a_1 = 0, \dots, a_m = 0$. Thus, $w_1, \dots, w_m$ is a linearly independent list.
+	
+	Now, consider the list $v_1 + w_1, \dots, v_m + w_m$. For each $i$, we have:
+	\[
+	v_i + w_i = v_i - v_i = 0
+	\]
+	The new list is exactly $0, \dots, 0$. Because this list contains the zero vector, it is linearly dependent. This disproves the statement.
+\end{proof}
+\begin{question}
+	Suppose $v_1, \dots, v_m$ is linearly independent in $\V$ and $w \in \V$. Prove that if $v_1 + w, \dots, v_m + w$ is linearly dependent, then $w \in \text{span}(v_1, \dots, v_m)$.
+\end{question}
+\begin{proof}
+	Because $v_1 + w, \dots, v_m + w$ is linearly dependent, there exist scalars $a_1, \dots, a_m \in \mathbb{F}$, not all zero, such that
+	\[
+	a_1(v_1 + w) + \dots + a_m(v_m + w) = 0.
+	\]
+	Expanding and rearranging the terms, we obtain
+	\[
+	a_1 v_1 + \dots + a_m v_m + (a_1 + \dots + a_m)w = 0.
+	\]
+	Let $c = a_1 + \dots + a_m$. If $c = 0$, then the equation simplifies to
+	\[
+	a_1 v_1 + \dots + a_m v_m = 0.
+	\]
+	Since $v_1, \dots, v_m$ is linearly independent, this implies that $a_1 = 0, \dots, a_m = 0$. However, this contradicts the fact that the scalars $a_1, \dots, a_m$ are not all zero. Therefore, it must be true that $c \neq 0$. 
+	
+	Since $c \neq 0$, we can divide by $c$ and solve for $w$:
+	\[
+	w = -\frac{a_1}{c}v_1 - \dots - \frac{a_m}{c}v_m.
+	\]
+	This demonstrates that $w$ is a linear combination of $v_1, \dots, v_m$. Thus, $w \in \text{span}(v_1, \dots, v_m)$.
+\end{proof}
+\begin{question}
+	Suppose $v_1, \dots, v_m$ is linearly independent in $\V$ and $w \in \V$. Show that
+	\[
+	v_1, \dots, v_m, w \text{ is linearly independent} \iff w \notin \text{span}(v_1, \dots, v_m).
+	\]
+\end{question}
+\begin{proof}
+	First, we prove the forward direction ($\implies$). Suppose $v_1, \dots, v_m, w$ is linearly independent. Assume, for the sake of contradiction, that $w \in \text{span}(v_1, \dots, v_m)$. Then there exist scalars $a_1, \dots, a_m \in \mathbb{F}$ such that
+	\[
+	w = a_1 v_1 + \dots + a_m v_m.
+	\]
+	Rearranging this equation gives
+	\[
+	a_1 v_1 + \dots + a_m v_m - w = 0.
+	\]
+	This is a linear combination of $v_1, \dots, v_m, w$ that equals $0$, where the coefficients are not all zero (specifically, the coefficient of $w$ is $-1$). This contradicts the assumption that $v_1, \dots, v_m, w$ is linearly independent. Therefore, it must be true that $w \notin \text{span}(v_1, \dots, v_m)$.
+	
+	Next, we prove the backward direction ($\impliedby$). Suppose $w \notin \text{span}(v_1, \dots, v_m)$. To show that $v_1, \dots, v_m, w$ is linearly independent, suppose there exist scalars $a_1, \dots, a_m, b \in \mathbb{F}$ such that
+	\[
+	a_1 v_1 + \dots + a_m v_m + b w = 0.
+	\]
+	If $b \neq 0$, we can solve for $w$:
+	\[
+	w = -\frac{a_1}{b} v_1 - \dots - \frac{a_m}{b} v_m.
+	\]
+	This would imply $w \in \text{span}(v_1, \dots, v_m)$, which contradicts our assumption. Therefore, we must have $b = 0$. Substituting $b = 0$ into our equation yields
+	\[
+	a_1 v_1 + \dots + a_m v_m = 0.
+	\]
+	Because $v_1, \dots, v_m$ is linearly independent, we conclude that $a_1 = 0, \dots, a_m = 0$. Since all scalars $a_1, \dots, a_m, b$ are zero, the list $v_1, \dots, v_m, w$ is linearly independent.
+\end{proof}
+\begin{question}
+	Suppose $v_1, \dots, v_m$ is a list of vectors in $V$. For $k \in \{1, \dots, m\}$, let
+	\[
+	w_k = v_1 + \dots + v_k.
+	\]
+	Show that the list $v_1, \dots, v_m$ is linearly independent if and only if the list $w_1, \dots, w_m$ is linearly independent.
+\end{question}
+\begin{proof}
+	First, we prove the forward direction ($\implies$). Suppose $v_1, \dots, v_m$ is linearly independent. To show that $w_1, \dots, w_m$ is linearly independent, suppose there exist scalars $a_1, \dots, a_m \in \mathbb{F}$ such that
+	\[
+	a_1 w_1 + a_2 w_2 + \dots + a_m w_m = 0.
+	\]
+	Substituting $w_k = v_1 + \dots + v_k$ for each $k$, we obtain
+	\[
+	a_1(v_1) + a_2(v_1 + v_2) + \dots + a_m(v_1 + \dots + v_m) = 0.
+	\]
+	Rearranging the terms by factoring out each $v_k$, we get
+	\[
+	(a_1 + a_2 + \dots + a_m)v_1 + (a_2 + \dots + a_m)v_2 + \dots + a_m v_m = 0.
+	\]
+	Because $v_1, \dots, v_m$ is linearly independent, all coefficients must be zero:
+	\begin{align*}
+		a_1 + a_2 + \dots + a_m &= 0 \\
+		a_2 + \dots + a_m &= 0 \\
+		&\vdots \\
+		a_m &= 0
+	\end{align*}
+	Working from the bottom up, $a_m = 0$, which implies $a_{m-1} = 0$, and so on, until $a_1 = 0$. Since all scalars $a_1, \dots, a_m$ are zero, $w_1, \dots, w_m$ is linearly independent.
+	
+	Next, we prove the backward direction ($\impliedby$). Suppose $w_1, \dots, w_m$ is linearly independent. To show that $v_1, \dots, v_m$ is linearly independent, suppose there exist scalars $b_1, \dots, b_m \in \mathbb{F}$ such that
+	\[
+	b_1 v_1 + b_2 v_2 + \dots + b_m v_m = 0.
+	\]
+	Notice that $v_1 = w_1$, and for $k \ge 2$, $v_k = w_k - w_{k-1}$. Substituting these expressions into our equation yields
+	\[
+	b_1(w_1) + b_2(w_2 - w_1) + b_3(w_3 - w_2) + \dots + b_m(w_m - w_{m-1}) = 0.
+	\]
+	Rearranging the terms to factor out each $w_k$, we obtain
+	\[
+	(b_1 - b_2)w_1 + (b_2 - b_3)w_2 + \dots + (b_{m-1} - b_m)w_{m-1} + b_m w_m = 0.
+	\]
+	Because $w_1, \dots, w_m$ is linearly independent, all coefficients must be zero:
+	\begin{align*}
+		b_1 - b_2 &= 0 \\
+		b_2 - b_3 &= 0 \\
+		&\vdots \\
+		b_{m-1} - b_m &= 0 \\
+		b_m &= 0
+	\end{align*}
+	From $b_m = 0$, it follows that $b_{m-1} = 0$, and continuing this chain gives $b_1 = b_2 = \dots = b_m = 0$. Therefore, $v_1, \dots, v_m$ is linearly independent.
+\end{proof}
+\begin{question}
+	Explain why there does not exist a list of six polynomials that is linearly independent in $\mathcal{P}_4(\F)$.
+\end{question}
+\begin{proof}
+	The vector space $\mathcal{P}_4(\F)$ consists of all polynomials with coefficients in $\F$ of degree at most 4. This space is spanned by the list of polynomials $1, z, z^2, z^3, z^4$.
+	
+	The length of this spanning list is 5. In any finite-dimensional vector space, the length of every linearly independent list of vectors is less than or equal to the length of every spanning list of vectors. 
+	
+	Since $\mathcal{P}_4(\F)$ has a spanning list of length 5, any linearly independent list in $\mathcal{P}_4(\F)$ must have a length of at most 5. Therefore, a list of six polynomials in $\mathcal{P}_4(\F)$ cannot be linearly independent.
+\end{proof}
+\begin{question}
+	Explain why no list of four polynomials spans $\mathcal{P}_4(\F)$.
+\end{question}
+\begin{proof}
+	The list of polynomials $1, z, z^2, z^3, z^4$ is linearly independent in $\mathcal{P}_4(\F)$. The length of this linearly independent list is 5. 
+	
+	In any finite-dimensional vector space, the length of every spanning list of vectors is greater than or equal to the length of every linearly independent list of vectors. 
+	
+	Because $\mathcal{P}_4(\F)$ contains a linearly independent list of length 5, any spanning list of $\mathcal{P}_4(\F)$ must have a length of at least 5. Therefore, no list of four polynomials can span the space.
+\end{proof}
+\begin{question}
+	Prove that $\V$ is infinite-dimensional if and only if there is a sequence $v_1, v_2, \dots$ of vectors in $\V$ such that $v_1, \dots, v_m$ is linearly independent for every positive integer $m$.
+\end{question}
+\begin{proof}
+	First, we prove the forward direction ($\implies$). Suppose $\V$ is infinite-dimensional. We will construct the sequence $v_1, v_2, \dots$ recursively. 
+	Since $\V$ is infinite-dimensional, $\V \neq \{0\}$, so there exists a nonzero vector $v_1 \in \V$. The list $v_1$ is linearly independent. 
+	Now, suppose for some positive integer $m$, we have chosen $v_1, \dots, v_m$ such that the list is linearly independent. Because $\V$ is infinite-dimensional, $v_1, \dots, v_m$ cannot span $\V$ (if it did, $\V$ would be finite-dimensional). Therefore, there exists a vector $v_{m+1} \in \V$ such that $v_{m+1} \notin \text{span}(v_1, \dots, v_m)$. Because $v_{m+1}$ is not in the span of the linearly independent list $v_1, \dots, v_m$, the extended list $v_1, \dots, v_m, v_{m+1}$ is also linearly independent. By mathematical induction, this process can be continued indefinitely to produce a sequence $v_1, v_2, \dots$ such that every finite prefix $v_1, \dots, v_m$ is linearly independent.
+	
+	Next, we prove the backward direction ($\impliedby$). Suppose there exists a sequence $v_1, v_2, \dots$ of vectors in $\V$ such that $v_1, \dots, v_m$ is linearly independent for every positive integer $m$. Assume, for the sake of contradiction, that $\V$ is finite-dimensional. Then $\V$ is spanned by some list of finite length, let's call this length $n$. 
+	The length of any linearly independent list in a finite-dimensional vector space is less than or equal to the length of every spanning list. By our assumption, the list $v_1, \dots, v_{n+1}$ is linearly independent. The length of this linearly independent list is $n+1$, which is strictly greater than the length of the spanning list $n$. This is a contradiction. Therefore, our assumption that $\V$ is finite-dimensional must be false, meaning $\V$ is infinite-dimensional.
+\end{proof}
+\begin{question}
+	Prove that $\F^\infty$ is infinite-dimensional.
+\end{question}
+\begin{proof}
+	For each positive integer $k$, let $e_k \in \F^\infty$ be the sequence with $1$ in the $k$-th position and $0$ in all other positions. 
+	
+	Consider an arbitrary positive integer $m$. We will show that the list $e_1, \dots, e_m$ is linearly independent. Suppose there exist scalars $a_1, \dots, a_m \in \F$ such that
+	\[
+	a_1 e_1 + \dots + a_m e_m = 0.
+	\]
+	The left side of this equation evaluates to the sequence $(a_1, \dots, a_m, 0, 0, \dots)$, while the right side is the zero sequence $(0, 0, 0, \dots)$. Equating the components, we immediately obtain $a_1 = 0, \dots, a_m = 0$. Thus, the list $e_1, \dots, e_m$ is linearly independent.
+	
+	Because $\F^\infty$ contains a linearly independent list of length $m$ for every positive integer $m$, it cannot be spanned by any finite list of vectors (the length of a linearly independent list cannot exceed the length of any spanning list). Therefore, $\F^\infty$ is infinite-dimensional.
+\end{proof}
+\begin{question}
+	Prove that the real vector space of all continuous real-valued functions on the interval $[0, 1]$ is infinite-dimensional.
+\end{question}
+\begin{proof}
+	Let $\V$ be the real vector space of all continuous real-valued functions on the interval $[0, 1]$. Consider the functions $f_k \in \V$ defined by $f_k(x) = x^k$ for $k = 0, 1, 2, \dots$. 
+	
+	For any positive integer $m$, consider the list of $m$ functions $f_0, f_1, \dots, f_{m-1}$. Suppose there exist real scalars $a_0, a_1, \dots, a_{m-1}$ such that
+	\[
+	a_0 f_0 + a_1 f_1 + \dots + a_{m-1} f_{m-1} = 0.
+	\]
+	This implies that for all $x \in [0, 1]$, we have
+	\[
+	a_0 + a_1 x + \dots + a_{m-1} x^{m-1} = 0.
+	\]
+	The left side of this equation is a polynomial of degree at most $m-1$. A non-zero polynomial of degree at most $m-1$ can have at most $m-1$ roots. However, this polynomial equals zero for all infinitely many values of $x$ in the interval $[0, 1]$. The only way this is possible is if the polynomial is the zero polynomial, meaning all its coefficients must be zero: $a_0 = 0, a_1 = 0, \dots, a_{m-1} = 0$.
+	
+	Thus, the list $f_0, f_1, \dots, f_{m-1}$ is linearly independent. Because $\V$ contains a linearly independent list of length $m$ for every positive integer $m$, $\V$ cannot be spanned by any finite list of vectors. Therefore, $\V$ is infinite-dimensional.
+\end{proof}
+\begin{question}
+	Suppose $p_0, p_1, \dots, p_m$ are polynomials in $\mathcal{P}_m(\F)$ such that $p_k(2) = 0$ for each $k \in \{0, \dots, m\}$. Prove that $p_0, p_1, \dots, p_m$ is not linearly independent in $\mathcal{P}_m(\F)$.
+\end{question}
+\begin{proof}
+	Because $p_k(2) = 0$ for each $k \in \{0, \dots, m\}$, each polynomial $p_k$ has a root at $2$. Therefore, we can factor out $(z - 2)$ from each polynomial. That is, there exist polynomials $q_0, q_1, \dots, q_m \in \mathcal{P}_{m-1}(\F)$ such that
+	\[
+	p_k(z) = (z - 2)q_k(z)
+	\]
+	for each $k \in \{0, \dots, m\}$.
+	
+	The vector space $\mathcal{P}_{m-1}(\F)$ is spanned by the list of polynomials $1, z, \dots, z^{m-1}$, which has a length of $m$. The list $q_0, q_1, \dots, q_m$ consists of $m+1$ polynomials in $\mathcal{P}_{m-1}(\F)$. 
+	
+	A fundamental theorem of linear algebra states that in any finite-dimensional vector space, the length of a linearly independent list cannot exceed the length of any spanning list. Because the list $q_0, q_1, \dots, q_m$ has length $m+1$, which is strictly greater than the length of the spanning list $m$, it follows that $q_0, q_1, \dots, q_m$ must be linearly dependent.
+	
+	Thus, there exist scalars $a_0, a_1, \dots, a_m \in \F$, not all zero, such that
+	\[
+	a_0 q_0 + a_1 q_1 + \dots + a_m q_m = 0.
+	\]
+	Multiplying both sides of this equation by $(z - 2)$, we obtain
+	\[
+	a_0 (z - 2)q_0 + a_1 (z - 2)q_1 + \dots + a_m (z - 2)q_m = 0,
+	\]
+	which simplifies to
+	\[
+	a_0 p_0 + a_1 p_1 + \dots + a_m p_m = 0.
+	\]
+	Because the scalars $a_0, a_1, \dots, a_m$ are not all zero, the list $p_0, p_1, \dots, p_m$ is not linearly independent.
 \end{proof}
